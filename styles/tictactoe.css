@@ -1,0 +1,26 @@
+body{
+    background-color: aqua;
+}
+
+
+
+
+.gameBoard{
+    background-color: black;
+    border-radius: 5px;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.gameBoard button{
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    font-size: 70px;
+}
