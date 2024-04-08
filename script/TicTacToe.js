@@ -9,15 +9,33 @@ var playerTurn = 0;
 
 
 // TODO: Refactor
-squareArr[0].onclick = function() {playerMove(squareArr[0])};
-squareArr[1].onclick = function() {playerMove(squareArr[1])};
-squareArr[2].onclick = function() {playerMove(squareArr[2])};
-squareArr[3].onclick = function() {playerMove(squareArr[3])};
-squareArr[4].onclick = function() {playerMove(squareArr[4])};
-squareArr[5].onclick = function() {playerMove(squareArr[5])};
-squareArr[6].onclick = function() {playerMove(squareArr[6])};
-squareArr[7].onclick = function() {playerMove(squareArr[7])};
-squareArr[8].onclick = function() {playerMove(squareArr[8])};
+squareArr[0].addEventListener('click', function(){
+    playerMove(squareArr[0])
+});
+squareArr[1].addEventListener('click', function(){
+    playerMove(squareArr[1])
+});
+squareArr[2].addEventListener('click', function(){
+    playerMove(squareArr[2])
+});
+squareArr[3].addEventListener('click', function(){
+    playerMove(squareArr[3])
+});
+squareArr[4].addEventListener('click', function(){
+    playerMove(squareArr[4])
+});
+squareArr[5].addEventListener('click', function(){
+    playerMove(squareArr[5])
+});
+squareArr[6].addEventListener('click', function(){
+    playerMove(squareArr[6])
+});
+squareArr[7].addEventListener('click', function(){
+    playerMove(squareArr[7])
+});
+squareArr[8].addEventListener('click', function(){
+    playerMove(squareArr[8])
+});
 
 
 function playerMove(tile){
