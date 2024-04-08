@@ -7,6 +7,9 @@ var s6 = document.getElementById("squareSix");
 var s7 = document.getElementById("squareSeven");
 var s8 = document.getElementById("squareEight");
 var s9 = document.getElementById("squareNine");
+var resetGame = document.getElementById("resetGame");
+
+
 var playerTurn = 0;
 
 s1.onclick = function() {playerMove(s1)};
@@ -20,14 +23,17 @@ s8.onclick = function() {playerMove(s8)};
 s9.onclick = function() {playerMove(s9)};
 
 function playerMove(tile){
-    if (playerTurn % 2 === 1){
-        tile.textContent = "O";
+    var playerTurnDisplay = document.getElementById("playerTurnDisplay");
+    if (tile.textContent === "O" || tile.textContent === "X"){
+        window.alert("Tile is occupied")
     }
-    else {
-        tile.textContent = "X";
-    }
-    playerTurn++;
-    if (playerTurn % 2 === 0){
-        
+    else{
+        if (playerTurn % 2 === 1){
+            tile.textContent = "O";
+        }
+        else {
+            tile.textContent = "X";
+        }
+        playerTurn++;
     }
 };
