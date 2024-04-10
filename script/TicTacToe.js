@@ -4,9 +4,7 @@ for (var i = 1; i <= 9; i++){
 }
 var resetGame = document.getElementById("resetGame");
 
-
 var playerTurn = 0;
-
 
 // TODO: Refactor
 squareArr[0].addEventListener('click', function(){
@@ -41,7 +39,7 @@ squareArr[8].addEventListener('click', function(){
 function playerMove(tile){
     var playerTurnDisplay = document.getElementById("playerTurnDisplay");
     if (tile.textContent === "O" || tile.textContent === "X"){
-        window.alert("Tile is occupied")
+        window.alert("Tile is occupied");
     }
     else{
         if (playerTurn % 2 === 1){
@@ -53,5 +51,50 @@ function playerMove(tile){
             playerTurnDisplay.textContent = "Player O";
         }
         playerTurn++;
+    }
+    setTimeout(checkWinner, 10);
+};
+
+ //TODO: Refactor
+function checkWinner(){
+    for (i = 0; i < 10; i++){
+        if (squareArr[4].textContent != ""){
+            if ((squareArr[4].textContent === squareArr[1].textContent) && (squareArr[4].textContent === squareArr[7].textContent)){
+                window.alert();
+                return;
+            }
+            if((squareArr[4].textContent === squareArr[3].textContent) && (squareArr[4].textContent === squareArr[5].textContent)){
+                window.alert();
+                return;
+            }
+            if((squareArr[4].textContent === squareArr[0].textContent) && (squareArr[4].textContent === squareArr[8].textContent)){
+                window.alert();
+                return;
+            }
+            if((squareArr[4].textContent === squareArr[6].textContent) && (squareArr[4].textContent === squareArr[2].textContent)){
+                window.alert();
+                return;
+            }
+        }
+        if (squareArr[0].textContent != ""){
+            if ((squareArr[0].textContent === squareArr[1].textContent) && (squareArr[0].textContent === squareArr[2].textContent)){
+                window.alert();
+                return;
+            }
+            if((squareArr[0].textContent === squareArr[3].textContent) && (squareArr[0].textContent === squareArr[6].textContent)){
+                    window.alert();
+                    return;
+            }
+        }
+        if (squareArr[8].textContent != ""){
+            if ((squareArr[8].textContent === squareArr[7].textContent) && (squareArr[8].textContent === squareArr[6].textContent)){
+                window.alert();
+                return;
+            }
+            if((squareArr[8].textContent === squareArr[5].textContent) && (squareArr[8].textContent === squareArr[2].textContent)){
+                    window.alert();
+                    return;
+            }
+        }
     }
 };
