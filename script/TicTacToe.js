@@ -8,8 +8,8 @@ var playerTurn = 0;
 
 for(let i = 0; i < squareArr.length; i++){
     squareArr[i].addEventListener('click', function(){
-        playerMove(squareArr[i])
-    })
+        playerMove(squareArr[i]);
+    });
 }
 
 
