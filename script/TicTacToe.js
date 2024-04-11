@@ -2,16 +2,22 @@ var squareArr = [];
 for (var i = 1; i <= 9; i++){
     squareArr.push(document.getElementById("square" + i));
 }
-var resetGame = document.getElementById("resetGame");
 
-var playerTurn = 0;
+var resetGame = document.getElementById("resetGame");
+resetGame.addEventListener("click", function(){
+
+    for(let i = 0; i < 10; i++){
+        squareArr[i].textContent = "";
+    }
+});
 
 for(let i = 0; i < squareArr.length; i++){
     squareArr[i].addEventListener('click', function(){
         playerMove(squareArr[i]);
     });
-}
+};
 
+var playerTurn = 0;
 
 function playerMove(tile){
     var playerTurnDisplay = document.getElementById("playerTurnDisplay");
