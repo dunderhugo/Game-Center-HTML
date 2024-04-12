@@ -1,5 +1,10 @@
 body{
-    background-color: aqua;
+    background-color: hsl(0, 0%, 10%);
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .gameBoard{
     background-color: black;
@@ -14,7 +19,7 @@ body{
 .gameBoard button{
     height: 100px;
     width: 100px;
-    background-color: white;
+    background-color: hsl(0, 0%, 85%);
     border-radius: 5px;
     color: black;
     font-weight: bold;
@@ -22,8 +27,27 @@ body{
 }
 
 #resetGame {
-    background-color: white;
-    height: 25px;
+    font-size: larger;
+    height: 55px;
     width: 150px;
     border-radius: 7px;
+}
+.gameInfo{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.gameInfo h4{
+    font-weight: 200;
+    padding: 0px;
+    margin: 4px;
+}
+main{
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

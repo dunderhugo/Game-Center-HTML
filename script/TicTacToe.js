@@ -1,4 +1,7 @@
 //TODO?: make sqaureArr an 2D array
+//TODO: More readable code, refactor and add comments
+//TODO: File for stats, button to reset stats
+//TODO: Naming stuff more understandable
 
 // Makes buttons from HTML to seperate values
 var squareArr = [];
