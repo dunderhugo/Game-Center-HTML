@@ -1,16 +1,19 @@
+//TODO?: make sqaureArr an 2D array
+
+// Makes buttons from HTML to seperate values
 var squareArr = [];
 for (var i = 1; i <= 9; i++){
     squareArr.push(document.getElementById("square" + i));
 }
 
+//TODO: Change so its not a reload() 
 var resetGame = document.getElementById("resetGame");
-resetGame.addEventListener("click", function(){
+function gameReset(){
+    location.reload();
+};
+resetGame.addEventListener("click",gameReset);
 
-    for(let i = 0; i < 10; i++){
-        squareArr[i].textContent = "";
-    }
-});
-
+// Adds EventListener to each button
 for(let i = 0; i < squareArr.length; i++){
     squareArr[i].addEventListener('click', function(){
         playerMove(squareArr[i]);
@@ -35,11 +38,27 @@ function playerMove(tile){
         }
         playerTurn++;
     }
-    setTimeout(checkWinner, 10);
+    setTimeout(threeInARowCheck, 10);
+    setTimeout(checkIfTie, 10);
 };
 
- //TODO: Refactor
-function checkWinner(){
+
+
+//TODO: If its a Tie, no winner
+function checkIfTie(){
+    let placedTies = 0;
+    for(let i = 0; i < 10; i++){
+        if(squareArr[i] && squareArr[i].textContent !== ""){
+            placedTies++;
+        };
+    };
+    if (placedTies === 9){
+        window.alert("Its a tie :(((");
+    };
+};
+//TODO: Refactor, could be done with less code, and less cluttered 
+//TODO: Make background green if it's three in a row
+function threeInARowCheck(){
     for (i = 0; i < 10; i++)
     {
         if (squareArr[4].textContent !== ""){
