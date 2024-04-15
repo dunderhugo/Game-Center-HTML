@@ -31,7 +31,7 @@ function playerMove(tile){
     if (tile.textContent === "O" || tile.textContent === "X"){
         window.alert("Tile is occupied");
     }
-    else{
+    else {
         if (playerTurn % 2 === 1){
             tile.textContent = "O";
             playerTurnDisplay.textContent = "Player X";
@@ -43,16 +43,16 @@ function playerMove(tile){
         playerTurn++;
     }
     setTimeout(threeInARowCheck, 10);
-    if (winner = false){
+    if (winner == false){
        setTimeout(checkIfTie, 10);
     }
 }
-
 
 function checkIfTie(){
     let placedTies = 0;
     for(let i = 0; i < 10; i++){
         if(squareArr[i] && squareArr[i].textContent !== ""){
+            console.log(placedTies);
             placedTies++;
         }
     }
