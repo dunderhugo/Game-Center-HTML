@@ -76,6 +76,7 @@ function checkWinnerFunc(checkOne, checkTwo, checkThree){
                 window.alert(checkOne.textContent+' wins!');
             },10);
             winner = true;
+            tileBtnDisable(squareArr);
             return;
         }
     }
@@ -93,6 +94,6 @@ function threeInARowCheck(){
 
 function tileBtnDisable(tileDisable){
     for (let i = 0; i < tileDisable.length; i++){
-
+        tileDisable[i].disabled = true;
     }
 }
