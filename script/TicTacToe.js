@@ -3,20 +3,19 @@
 //TODO: File for stats, button to reset stats
 //TODO: Naming stuff more understandable
 
-// Makes buttons from HTML to seperate values
+/* Makes buttons from HTML to seperate values */
 var squareArr = [];
 for (let i = 1; i <= 9; i++){
     squareArr.push(document.getElementById("square" + i));
 }
 
-//TODO: Change so its not a reload() 
 var resetGame = document.getElementById("resetGame");
 function gameReset(){
     location.reload();
 }
 resetGame.addEventListener("click",gameReset);
 
-// Adds EventListener to each button
+/* Adds EventListener to each button */
 for(let i = 0; i < squareArr.length; i++){
     squareArr[i].addEventListener('click', function(){
         playerMove(squareArr[i]);
@@ -62,8 +61,6 @@ function checkIfTie(){
 }
 
 //TODO: Refactor
-//TODO: Restart game if someone wins
-/* Checks if someone wins */
 function checkWinnerFunc(checkOne, checkTwo, checkThree){
     if(checkOne.textContent !==""){
         if ((checkOne.textContent === checkTwo.textContent) && 
