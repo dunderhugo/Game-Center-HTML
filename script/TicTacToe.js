@@ -67,67 +67,25 @@ function checkIfTie(){
 //TODO: Make something other than alert, and also display who actually wins
 //TODO: Restart game if someone wins
 
+/* Checks if winning */
+function checkWinnerFunc(checkOne, checkTwo, checkThree){
+    if(checkOne.textContent !==""){
+        if ((checkOne.textContent === checkTwo.textContent) && 
+            (checkOne.textContent === checkThree.textContent))
+        {
+            window.alert(checkOne.textContent+' wins!');
+            winner = true;
+            return;
+        };
+    };
+};
 function threeInARowCheck(){
-    if (squareArr[4].textContent !== ""){
-        if ((squareArr[4].textContent === squareArr[1].textContent) && 
-        (squareArr[4].textContent === squareArr[7].textContent))
-        {
-            window.alert();
-            winner = true;
-            return;
-        }
-        if((squareArr[4].textContent === squareArr[3].textContent) && 
-        (squareArr[4].textContent === squareArr[5].textContent))
-        {
-            window.alert();
-            winner = true;
-            return;
-        }
-        if((squareArr[4].textContent === squareArr[0].textContent) && 
-        (squareArr[4].textContent === squareArr[8].textContent))
-        {
-            window.alert();
-            winner = true;
-            return;
-        }
-        if((squareArr[4].textContent === squareArr[6].textContent) && 
-        (squareArr[4].textContent === squareArr[2].textContent))
-        {
-            window.alert();
-            winner = true;
-            return;
-        }
-    }
-    if (squareArr[0].textContent !== ""){
-        if ((squareArr[0].textContent === squareArr[1].textContent) && 
-        (squareArr[0].textContent === squareArr[2].textContent))
-        {
-            window.alert();
-            winner = true;
-            return;
-        }
-        if((squareArr[0].textContent === squareArr[3].textContent) && 
-        (squareArr[0].textContent === squareArr[6].textContent))
-        {
-            window.alert();
-            winner = true;
-            return;
-        }
-    }
-    if (squareArr[8].textContent !== ""){
-        if ((squareArr[8].textContent === squareArr[7].textContent) && 
-        (squareArr[8].textContent === squareArr[6].textContent))
-        {
-            window.alert();
-            winner = true;
-            return;
-        }
-        if((squareArr[8].textContent === squareArr[5].textContent) && 
-        (squareArr[8].textContent === squareArr[2].textContent))
-        {
-            window.alert();
-            winner = true;
-            return;
-        }
-    }
+    checkWinnerFunc(squareArr[4], squareArr[1],squareArr[7])
+    checkWinnerFunc(squareArr[4], squareArr[3],squareArr[5])
+    checkWinnerFunc(squareArr[4], squareArr[0],squareArr[8])
+    checkWinnerFunc(squareArr[4], squareArr[2],squareArr[6])
+    checkWinnerFunc(squareArr[0], squareArr[1],squareArr[2])
+    checkWinnerFunc(squareArr[0], squareArr[3],squareArr[6])
+    checkWinnerFunc(squareArr[8], squareArr[7],squareArr[6])
+    checkWinnerFunc(squareArr[8], squareArr[5],squareArr[2])
 };
