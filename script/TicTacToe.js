@@ -27,7 +27,7 @@ var playerTurn = 0;
 
 function playerMove(tile){
     var playerTurnDisplay = document.getElementById("playerTurnDisplay");
-    var winner = false;
+    let winner = false;
     if (tile.textContent === "O" || tile.textContent === "X"){
         window.alert("Tile is occupied");
     }
@@ -46,7 +46,6 @@ function playerMove(tile){
     if (winner = false){
        setTimeout(checkIfTie, 10);
     }
-    
 };
 
 
@@ -62,9 +61,7 @@ function checkIfTie(){
     };
 };
 
-//TODO: Refactor, could be done with less code, and less cluttered 
-//TODO: Make background green if it's three in a row
-//TODO: Make something other than alert, and also display who actually wins
+//TODO: Refactor
 //TODO: Restart game if someone wins
 
 /* Checks if winning */
@@ -73,7 +70,12 @@ function checkWinnerFunc(checkOne, checkTwo, checkThree){
         if ((checkOne.textContent === checkTwo.textContent) && 
             (checkOne.textContent === checkThree.textContent))
         {
-            window.alert(checkOne.textContent+' wins!');
+            checkOne.style.backgroundColor = "green";
+            checkTwo.style.backgroundColor = "green";
+            checkThree.style.backgroundColor = "green";
+            setTimeout(function(){
+                window.alert(checkOne.textContent+' wins!');
+            },10);
             winner = true;
             return;
         };
