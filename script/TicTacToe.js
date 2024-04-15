@@ -27,6 +27,7 @@ var playerTurn = 0;
 
 function playerMove(tile){
     var playerTurnDisplay = document.getElementById("playerTurnDisplay");
+    var winner = false;
     if (tile.textContent === "O" || tile.textContent === "X"){
         window.alert("Tile is occupied");
     }
@@ -42,12 +43,13 @@ function playerMove(tile){
         playerTurn++;
     }
     setTimeout(threeInARowCheck, 10);
-    setTimeout(checkIfTie, 10);
+    if (winner = false){
+       setTimeout(checkIfTie, 10);
+    }
+    
 };
 
 
-
-//FIX ME: if winner on last places tile, tie alert pop ups
 function checkIfTie(){
     let placedTies = 0;
     for(let i = 0; i < 10; i++){
@@ -63,8 +65,8 @@ function checkIfTie(){
 //TODO: Refactor, could be done with less code, and less cluttered 
 //TODO: Make background green if it's three in a row
 //TODO: Make something other than alert, and also display who actually wins
+//TODO: Restart game if someone wins
 function threeInARowCheck(){
-
     for (i = 0; i < 10; i++)
     {
         if (squareArr[4].textContent !== ""){
@@ -72,24 +74,28 @@ function threeInARowCheck(){
             (squareArr[4].textContent === squareArr[7].textContent))
             {
                 window.alert();
+                winner = true;
                 return;
             }
             if((squareArr[4].textContent === squareArr[3].textContent) && 
             (squareArr[4].textContent === squareArr[5].textContent))
             {
                 window.alert();
+                winner = true;
                 return;
             }
             if((squareArr[4].textContent === squareArr[0].textContent) && 
             (squareArr[4].textContent === squareArr[8].textContent))
             {
                 window.alert();
+                winner = true;
                 return;
             }
             if((squareArr[4].textContent === squareArr[6].textContent) && 
             (squareArr[4].textContent === squareArr[2].textContent))
             {
                 window.alert();
+                winner = true;
                 return;
             }
         }
@@ -98,13 +104,15 @@ function threeInARowCheck(){
             (squareArr[0].textContent === squareArr[2].textContent))
             {
                 window.alert();
+                winner = true;
                 return;
             }
             if((squareArr[0].textContent === squareArr[3].textContent) && 
             (squareArr[0].textContent === squareArr[6].textContent))
             {
-                    window.alert();
-                    return;
+                window.alert();
+                winner = true;
+                return;
             }
         }
         if (squareArr[8].textContent !== ""){
@@ -112,13 +120,15 @@ function threeInARowCheck(){
             (squareArr[8].textContent === squareArr[6].textContent))
             {
                 window.alert();
+                winner = true;
                 return;
             }
             if((squareArr[8].textContent === squareArr[5].textContent) && 
             (squareArr[8].textContent === squareArr[2].textContent))
             {
-                    window.alert();
-                    return;
+                window.alert();
+                winner = true;
+                return;
             }
         }
     }
