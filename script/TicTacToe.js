@@ -47,7 +47,7 @@ function playerMove(tile){
 
 
 
-//TODO: If its a Tie, no winner
+//FIX ME: if winner on last places tile, tie alert pop ups
 function checkIfTie(){
     let placedTies = 0;
     for(let i = 0; i < 10; i++){
@@ -59,8 +59,10 @@ function checkIfTie(){
         window.alert("Its a tie :(((");
     };
 };
+
 //TODO: Refactor, could be done with less code, and less cluttered 
 //TODO: Make background green if it's three in a row
+//TODO: Make something other than alert, and also display who actually wins
 function threeInARowCheck(){
 
     for (i = 0; i < 10; i++)
