@@ -5,7 +5,7 @@
 
 // Makes buttons from HTML to seperate values
 var squareArr = [];
-for (var i = 1; i <= 9; i++){
+for (let i = 1; i <= 9; i++){
     squareArr.push(document.getElementById("square" + i));
 }
 
@@ -62,6 +62,7 @@ function checkIfTie(){
 //TODO: Refactor, could be done with less code, and less cluttered 
 //TODO: Make background green if it's three in a row
 function threeInARowCheck(){
+
     for (i = 0; i < 10; i++)
     {
         if (squareArr[4].textContent !== ""){

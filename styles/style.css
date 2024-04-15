@@ -12,7 +12,7 @@ header{
     background-color: lightseagreen;
     display: flex;
     justify-content: space-between;
-    flex-direction: row-reverse;
+    flex-direction: row;
     padding-right: 150px;
     padding-left: 50px;
 }
@@ -56,4 +56,42 @@ header{
 }
 .gamePage a{
     font-size: x-large;
+}
+
+
+/* Hamburger menu */
+
+.dropDownBtn{
+    background-color: red;
+    color: white;
+    padding: 15px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropDownBtn:hover, .dropDownBtn:focus{
+    background-color: #2980B9;
+}
+
+.dropDown{
+    position: relative;
+    display: inline-block;
+}
+
+.hamburgerMenu{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.hamburgerMenu a{
+    color: black;
+}
+
+.show {
+    display: block;
 }
