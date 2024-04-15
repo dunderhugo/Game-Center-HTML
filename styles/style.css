@@ -69,16 +69,13 @@ header{
     border: none;
     cursor: pointer;
 }
-
 .dropDownBtn:hover, .dropDownBtn:focus{
     background-color: #2980B9;
 }
-
 .dropDown{
     position: relative;
     display: inline-block;
 }
-
 .hamburgerMenu{
     display: none;
     position: absolute;
@@ -87,11 +84,16 @@ header{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-
 .hamburgerMenu a{
     color: black;
+    display: block;
+    text-decoration: none;
+    background-color: white;
+    padding: 15px;
 }
-
+.hamburgerMenu a:hover{
+    background-color: hsl(0, 0%, 80%);
+}
 .show {
     display: block;
 }
