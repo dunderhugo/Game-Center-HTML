@@ -25,27 +25,34 @@
             <button id="exitHsBtn">X</button>
             <h1>Highscore:</h1>
             <ol>
-                <div id="highScore1">
-                    <li> -score- </li>
-                    <p>-playername-</p>
+                <div class="playerHighScore" id="highScore1">
+                    <li>
+                        <span class="scoreNumber">1.</span> -score- <span class="playerName">-playername-</span>
+                    </li>
                 </div>
-                
             </ol>
         </div>
     </div>
-    <div class="menu">
-        <button class="btn" id="startBtn">Start</button>
-        <button class="btn" id="highScoreBtn">High score</button>
-        <button class="btn" id="rulesBtn">Rules</button>
-        <button class="btn" id="goBackBtn" onclick="location.href='index.html'" type="button">
-            Exit</button>
-        
-    </div>
-    <div class="gameBoard">
-        <div id="card0" class="gameCard">
+    <div id="gameBoardDiv">
+        <div class="gameBoard">
+            <div id="card0" class="gameCard">
+            </div>
+            <div id="card0" class="gameCard">
+            </div>
+            <div id="card0" class="gameCard">
+            </div>
+            <div id="card0" class="gameCard">
+            </div>
         </div>
     </div>
-
+    <div class="menuDiv">
+        <div class="menu">
+            <button class="menuBtn" id="startBtn">Start</button>
+            <button class="menuBtn" id="highScoreBtn">High score</button>
+            <button class="menuBtn" id="rulesBtn">Rules</button>
+            <button class="menuBtn" id="goBackBtn" onclick="location.href='index.html'" type="button">Exit</button>
+        </div>
+    </div>
     <script src="script/memory.js"></script>
 </body>
 </html>

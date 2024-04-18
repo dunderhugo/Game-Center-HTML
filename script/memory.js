@@ -30,3 +30,15 @@ document.getElementById("highScoreBtn").addEventListener("click", function(){
 document.getElementById("exitHsBtn").addEventListener("click", function(){
     highScoreDiv.style.display = "none";
 });
+
+document.getElementById("startBtn").addEventListener("click", function(){
+    var gameBoardDiv = document.getElementById("gameBoardDiv");
+    if (gameBoardDiv.style.display === "none" || highScoreDiv.style.display === "")
+    {
+        gameBoardDiv.style.display = "block";
+    } 
+    else 
+    {
+        gameBoardDiv.style.display = "none";
+    }
+});
