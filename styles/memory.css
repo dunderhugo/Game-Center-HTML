@@ -25,19 +25,21 @@ body{
 
 
 
-#exitBtn{
+#exitRulesBtn{
     color: black;
     background-color: red;
     border-radius: 3px;
     width: 25px;
     height: 25px;
-    z-index: 999;
 }
 
 #rulesDiv{
+    height: 100%;
+    width: 100%;
     display: none;
     position: fixed;
     background-color: grey;
+    z-index: 999;
 }
 
 .gameCard{

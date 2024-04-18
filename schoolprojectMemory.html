@@ -7,17 +7,9 @@
     <link rel="stylesheet" href="styles/memory.css">
 </head>
 <body>
-    <div class="menu">
-        <button class="btn" id="startBtn">Start</button>
-        <button class="btn">High score</button>
-        <button class="btn" id="rulesBtn">Rules</button>
-        <button class="btn" id="goBackBtn" onclick="location.href='index.html'" type="button">
-            Exit</button>
-        
-    </div>
     <div id="rulesDiv">
         <div class="rulesContent">
-            <button id="exitBtn">X</button>
+            <button id="exitRulesBtn">X</button>
             <h1>RULES</h1>
             <ul>
                 <li>Match 2 cards together</li>
@@ -27,6 +19,14 @@
                 <li>When one column is 4 in height, it's Game over</li>
             </ul>
         </div>
+    </div>
+    <div class="menu">
+        <button class="btn" id="startBtn">Start</button>
+        <button class="btn">High score</button>
+        <button class="btn" id="rulesBtn">Rules</button>
+        <button class="btn" id="goBackBtn" onclick="location.href='index.html'" type="button">
+            Exit</button>
+        
     </div>
     <div class="gameBoard">
         <div id="card0" class="gameCard">
