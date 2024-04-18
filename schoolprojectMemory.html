@@ -8,12 +8,15 @@
 </head>
 <body>
     <div class="menu">
-        <button>START</button>
-        <button>RULES</button>
-        <a href="index.html">GO BACK</a>
+        <button class="btn" id="startBtn">Start</button>
+        <button class="btn">High score</button>
+        <button class="btn">Rules</button>
+        <button class="btn" id="goBackBtn" onclick="location.href='index.html'" type="button">
+            Exit</button>
+        
     </div>
     <div class="rules">
-        <button>X</button>
+        <button id="exitBtn">X</button>
         <h1>RULES</h1>
         <ul>
             <li>Match 2 cards together</li>
@@ -24,8 +27,7 @@
         </ul>
     </div>
     <div class="gameBoard">
-        <div class="gameCard">
-            <p>number</p>
+        <div id="card0" class="gameCard">
         </div>
     </div>
 

@@ -1,0 +1,53 @@
+body{
+    background-color: hsl(0, 0%, 10%);
+    /* display: flex;
+    justify-content: center; */
+    margin: 0px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.btn{
+    height: 50px;
+    width: 250px;
+    margin: 10px;
+    background-color: hsl(0, 0%, 85%);
+    border-radius: 10px;
+    border-style: hidden;
+    font-weight: 500;
+    font-size: larger;
+}
+#startBtn{
+    background-color: green;
+}
+#goBackBtn{
+    background-color: red;
+}
+
+
+
+#exitBtn{
+    color: black;
+    background-color: red;
+    border-radius: 3px;
+    width: 25px;
+    height: 25px;
+}
+
+.rules{
+    background-color: grey;
+}
+
+.gameCard{
+    background-color: red;
+    height: 150px;
+    width: 100px;
+    border-radius: 10px;
+}
+.gameCard:hover{
+    background-color: blue;
+}
+
+
+.gameBoard{
+    background-color: azure;
+}
