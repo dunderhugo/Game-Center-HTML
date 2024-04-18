@@ -10,21 +10,23 @@
     <div class="menu">
         <button class="btn" id="startBtn">Start</button>
         <button class="btn">High score</button>
-        <button class="btn">Rules</button>
+        <button class="btn" id="rulesBtn">Rules</button>
         <button class="btn" id="goBackBtn" onclick="location.href='index.html'" type="button">
             Exit</button>
         
     </div>
-    <div class="rules">
-        <button id="exitBtn">X</button>
-        <h1>RULES</h1>
-        <ul>
-            <li>Match 2 cards together</li>
-            <li>1 Pair gives you 1000 points</li>
-            <li>Every 3rd turn, 2 cards gets added on each column</li>
-            <li>Game over:</li>
-            <li>When one column is 4 in height, it's Game over</li>
-        </ul>
+    <div id="rulesDiv">
+        <div class="rulesContent">
+            <button id="exitBtn">X</button>
+            <h1>RULES</h1>
+            <ul>
+                <li>Match 2 cards together</li>
+                <li>1 Pair gives you 1000 points</li>
+                <li>Every 3rd turn, 2 cards gets added on each column</li>
+                <li>Game over:</li>
+                <li>When one column is 4 in height, it's Game over</li>
+            </ul>
+        </div>
     </div>
     <div class="gameBoard">
         <div id="card0" class="gameCard">
