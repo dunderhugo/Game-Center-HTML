@@ -15,6 +15,7 @@ body{
     border-style: hidden;
     font-weight: 500;
     font-size: larger;
+    cursor: pointer;
 }
 #startBtn{
     background-color: green;
@@ -23,16 +24,25 @@ body{
     background-color: red;
 }
 
+/* HIGHSCORE */
+#highScoreDiv{
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    background-color: grey;
+    z-index: 999;
+}
 
-
+/* RULES */
 #exitRulesBtn{
     color: black;
     background-color: red;
     border-radius: 3px;
     width: 25px;
     height: 25px;
+    cursor: pointer;
 }
-
 #rulesDiv{
     height: 100%;
     width: 100%;
@@ -42,6 +52,7 @@ body{
     z-index: 999;
 }
 
+/* GAME BOARD */
 .gameCard{
     background-color: red;
     height: 150px;
@@ -50,9 +61,8 @@ body{
 }
 .gameCard:hover{
     background-color: blue;
+    cursor: pointer;
 }
-
-
 .gameBoard{
     background-color: azure;
 }

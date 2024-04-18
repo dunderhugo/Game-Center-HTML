@@ -32,7 +32,7 @@ header{
     padding: 15px;
     background-color: beige;
     display: flex;
-    
+    flex-wrap: wrap;
 }
 
 .gamePage{
