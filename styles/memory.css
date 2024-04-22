@@ -94,6 +94,12 @@ html, body {
 }
 
 /* GAME BOARD CONTENT */
+
+#addCardBtn{
+    height: 100px;
+    width: 200px;
+}
+
 #gameBoardDiv{
     height: 100%;
     width: 100%;
@@ -107,14 +113,17 @@ html, body {
     height: 150px;
     width: 100px;
     border-radius: 10px;
+    transition: all 1s ease;
 }
 .gameCard:hover{
     background-color: blue;
     cursor: pointer;
 }
-.gameBoard{
+#gameBoard{
     background-color: azure;
     display: flex;
-    height: 100%;
-    width: 100%;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 600px;
+    width: 375px;
 }

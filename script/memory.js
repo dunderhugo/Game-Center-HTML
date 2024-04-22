@@ -1,3 +1,12 @@
+document.getElementById("addCardBtn").addEventListener("click", function(){
+    var gameBoard = document.getElementById("gameBoard")
+    var newCard = document.createElement("div");
+    newCard.id = "card" + gameBoard.children.length;
+    newCard.className = "gameCard";
+    gameBoard.appendChild(newCard);
+    console.log(newCard)
+})
+
 //TODO: Refactor
 document.getElementById("rulesBtn").addEventListener("click", function(){
     var rulesDiv = document.getElementById("rulesDiv");
