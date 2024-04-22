@@ -10,7 +10,6 @@ document.getElementById("addCardBtn").addEventListener("click", function(){
     gameBoard.appendChild(newCard);
 });
 
-//TODO: Refactor
 function viewsBtn(btnPressed){
     if (btnPressed.style.display === "none" || btnPressed.style.display === "")
     {
@@ -21,20 +20,8 @@ function viewsBtn(btnPressed){
         btnPressed.style.display = "none";
     }
 }
-document.getElementById("rulesBtn").addEventListener("click", function(){
-    viewsBtn(rulesDiv);
-});
-document.getElementById("exitRulesBtn").addEventListener("click", function(){
-    rulesDiv.style.display = "none";
-});
-
-document.getElementById("highScoreBtn").addEventListener("click", function(){
-    viewsBtn(highScoreDiv);
-});
-document.getElementById("exitHsBtn").addEventListener("click", function(){
-    highScoreDiv.style.display = "none";
-});
-
-document.getElementById("startBtn").addEventListener("click", function(){
-    viewsBtn(gameBoardDiv);
-});
+document.getElementById("rulesBtn").addEventListener("click", () => viewsBtn(rulesDiv));
+document.getElementById("highScoreBtn").addEventListener("click", () => viewsBtn(highScoreDiv));
+document.getElementById("startBtn").addEventListener("click", ()=> viewsBtn(gameBoardDiv));
+document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
+document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
