@@ -1,53 +1,40 @@
+var rulesDiv = document.getElementById("rulesDiv");
+var highScoreDiv = document.getElementById("highScoreDiv");
+var gameBoardDiv = document.getElementById("gameBoardDiv");
+var gameBoard = document.getElementById("gameBoard");
+
 document.getElementById("addCardBtn").addEventListener("click", function(){
-    var gameBoard = document.getElementById("gameBoard")
     var newCard = document.createElement("div");
     newCard.id = "card" + gameBoard.children.length;
     newCard.className = "gameCard";
     gameBoard.appendChild(newCard);
-    console.log(newCard)
-})
+});
 
 //TODO: Refactor
-document.getElementById("rulesBtn").addEventListener("click", function(){
-    var rulesDiv = document.getElementById("rulesDiv");
-    if (rulesDiv.style.display === "none" || rulesDiv.style.display === "")
+function viewsBtn(btnPressed){
+    if (btnPressed.style.display === "none" || btnPressed.style.display === "")
     {
-        rulesDiv.style.display = "block";
+        btnPressed.style.display = "block";
     } 
     else 
     {
-        rulesDiv.style.display = "none";
+        btnPressed.style.display = "none";
     }
+}
+document.getElementById("rulesBtn").addEventListener("click", function(){
+    viewsBtn(rulesDiv);
 });
-
 document.getElementById("exitRulesBtn").addEventListener("click", function(){
     rulesDiv.style.display = "none";
 });
 
 document.getElementById("highScoreBtn").addEventListener("click", function(){
-    var highScoreDiv = document.getElementById("highScoreDiv");
-    if (highScoreDiv.style.display === "none" || highScoreDiv.style.display === "")
-    {
-        highScoreDiv.style.display = "block";
-    } 
-    else 
-    {
-        highScoreDiv.style.display = "none";
-    }
-})
-
+    viewsBtn(highScoreDiv);
+});
 document.getElementById("exitHsBtn").addEventListener("click", function(){
     highScoreDiv.style.display = "none";
 });
 
 document.getElementById("startBtn").addEventListener("click", function(){
-    var gameBoardDiv = document.getElementById("gameBoardDiv");
-    if (gameBoardDiv.style.display === "none" || highScoreDiv.style.display === "")
-    {
-        gameBoardDiv.style.display = "block";
-    } 
-    else 
-    {
-        gameBoardDiv.style.display = "none";
-    }
+    viewsBtn(gameBoardDiv);
 });

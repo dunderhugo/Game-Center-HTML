@@ -113,7 +113,8 @@ html, body {
     height: 150px;
     width: 100px;
     border-radius: 10px;
-    transition: all 1s ease;
+    transition: all 300ms ease;
+    margin: 10px;
 }
 .gameCard:hover{
     background-color: blue;
@@ -121,9 +122,9 @@ html, body {
 }
 #gameBoard{
     background-color: azure;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3, 1fr);
     height: 600px;
     width: 375px;
 }
