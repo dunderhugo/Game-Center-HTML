@@ -10,6 +10,7 @@ document.getElementById("addCardBtn").addEventListener("click", function(){
     gameBoard.appendChild(newCard);
 });
 
+// Do i need this function?
 function viewsBtn(btnPressed){
     if (btnPressed.style.display === "none" || btnPressed.style.display === "")
     {
@@ -23,5 +24,6 @@ function viewsBtn(btnPressed){
 document.getElementById("rulesBtn").addEventListener("click", () => viewsBtn(rulesDiv));
 document.getElementById("highScoreBtn").addEventListener("click", () => viewsBtn(highScoreDiv));
 document.getElementById("startBtn").addEventListener("click", ()=> viewsBtn(gameBoardDiv));
+//TODO: Display: flex instead
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
