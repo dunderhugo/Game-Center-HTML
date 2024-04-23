@@ -2,25 +2,19 @@ var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
 var gameBoard = document.getElementById("gameBoard");
+var memoryArr = ["1", "2", "3", "4", "5"]
 
 document.getElementById("addCardBtn").addEventListener("click", function(){
     var newCard = document.createElement("div");
     newCard.id = "card" + gameBoard.children.length;
     newCard.className = "gameCard";
-    var newSpan = document.createElement("span");
-    newSpan.textContent = "5";
-    newSpan.style.display = "none";
-    newCard.appendChild(newSpan);
     gameBoard.appendChild(newCard);
     console.log(newCard);
 });
 
 for (let i = 0; i < gameBoard.children.length; i++){
-    let cardToAppendSpan = document.getElementById("card" + i);
-    var newSpan = document.createElement("span");
-    newSpan.textContent = "5";
-    newSpan.style.display = "none";
-    cardToAppendSpan.appendChild(newSpan);
+    let cardTextContent = document.getElementById("card" + i);
+    cardTextContent.textContent = "1";
 }
 
 // Do i need this function?
@@ -45,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('gameBoard').addEventListener('click', function(event) {
         if (event.target.classList.contains('gameCard')) {
             var cardId = event.target.id;
-            console.log(cardId, event.target.className, event.target.children);
+            console.log(cardId, event.target.className);
         }
     });
 });
