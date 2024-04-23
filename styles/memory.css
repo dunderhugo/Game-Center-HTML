@@ -110,6 +110,7 @@ html, body {
 }
 .gameCard{
     background-color: hsl(0, 0%, 50%);
+    /* color: rgba(0, 0, 0, 0); */
     height: 150px;
     width: 100px;
     border-radius: 10px;

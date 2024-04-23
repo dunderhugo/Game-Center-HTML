@@ -11,6 +11,7 @@ document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDi
 // Need 12 different
 var memoryArr = ["blue", "green", "yellow", "pink", "red"];
 var flippedCards = [];
+var turnsPlayed = 0;
 
 document.getElementById("addCardBtn").addEventListener("click", function(){
     var newCard = document.createElement("div");
@@ -29,7 +30,6 @@ for (let i = 0; i < gameBoard.children.length; i+=2){
     matchCardOne.textContent = memoryArr[randomColor];
     matchCardTwo.textContent = memoryArr[randomColor];
     memoryArr.splice(randomColor, 1)[0];
-    console.log(memoryArr)
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -62,14 +62,27 @@ document.addEventListener('DOMContentLoaded', function() {
                         changeToDefaultColor(flippedCards[0], flippedCards[1]);
                     }
                     flippedCards = [];
+                    turnsPlayed++;
+                    console.log(turnsPlayed)
+                    if (turnsPlayed == 3)
+                    {
+                        addCardsToColumn();
+                    }
                 }, 500)
-                
             }
         }
+
     });
 });
 
+function addCardsToColumn(){
+    // Add cards to column every 3 rounds
+    console.log("NYI")
+}
+
 function removeCorrectMatches(divToRemoveOne, divToRemoveTwo){
+    let addColorToArray = document.getElementById(divToRemoveOne).textContent;
+    memoryArr.push(addColorToArray);
     var removeDivOne = document.getElementById(divToRemoveOne)
     var removeDivTwo = document.getElementById(divToRemoveTwo)
     removeDivOne.remove(); 
