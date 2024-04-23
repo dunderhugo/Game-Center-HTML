@@ -2,6 +2,10 @@ var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
 var gameBoard = document.getElementById("gameBoard");
+var column0 = document.querySelector("#column0");
+var column1 = document.querySelector("#column1");
+var column2 = document.querySelector("#column2");
+var column3 = document.querySelector("#column3");
 //TODO: Display: flex instead of "block"
 document.getElementById("rulesBtn").addEventListener("click", () => rulesDiv.style.display = "block");
 document.getElementById("highScoreBtn").addEventListener("click", () => highScoreDiv.style.display = "block");
@@ -13,29 +17,48 @@ var memoryArr = ["blue", "green", "yellow", "pink", "red"];
 var flippedCards = [];
 var turnsPlayed = 0;
 var points = 0;
+var nextCardMustMatch = false;
 
-document.getElementById("addCardBtn").addEventListener("click", function(){
+function cardsToColumn(amountOfCards){
+    if (amountOfCards === 2)
+    {
+
+    }
+    else if (amountOfCards === 3)
+    {
+
+    }
+    else 
+    {
+
+    }
+}
+var nextCardColor;
+function spawnCard(columnToSpawn){
+    var countGameCard = document.querySelectorAll('.gameCard').length;
     var newCard = document.createElement("div");
     newCard.id = "card" + countGameCard;
     newCard.className = "gameCard";
-    newCard.textContent = "blue";
-    gameBoard.appendChild(newCard);
-    console.log(newCard);
-});
-
-// Changes the textContent of cards
-var countGameCard = document.querySelectorAll('.gameCard').length;
-// for (let i = i; i < countGameCard; i++){
-
-// }
-// for (let i = 0; i < gameBoard.children.length; i+=2){
-//     let matchCardOne = document.getElementById("card" + i);
-//     let matchCardTwo = document.getElementById("card" + (i + 1));
-//     let randomColor = Math.floor(Math.random() * memoryArr.length)
-//     matchCardOne.textContent = memoryArr[randomColor];
-//     matchCardTwo.textContent = memoryArr[randomColor];
-//     memoryArr.splice(randomColor, 1)[0];
-// }
+    if(!nextCardMustMatch)
+    {
+        var randomColor = Math.floor(Math.random() * memoryArr.length);
+        nextCardColor = memoryArr[randomColor];
+        newCard.textContent = memoryArr[randomColor];
+        memoryArr.splice(randomColor, 1)[0];
+        nextCardMustMatch = true;
+    }
+    else
+    {
+        newCard.textContent = nextCardColor;
+        nextCardMustMatch = false;
+    }
+    columnToSpawn.appendChild(newCard);
+    console.log(newCard)
+}
+document.getElementById("addCardBtn").addEventListener("click", function(){
+    spawnCard(column0);
+    spawnCard(column1);
+})
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('gameBoard').addEventListener('click', function(event) {
@@ -46,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
             {
                 flippedCards[0] = cardId;
                 checkCard = event.target.textContent;
-                console.log(flippedCards)
             }
             else if (flippedCards[0] === cardId)
             {
@@ -69,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     flippedCards = [];
                     turnsPlayed++;
-                    console.log(turnsPlayed)
                     if (turnsPlayed == 3)
                     {
                         addCardsToColumn();
@@ -77,14 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 500)
             }
         }
-
     });
 });
-
-function addCardsToColumn(){
-    // Add cards to column every 3 rounds
-    console.log("NYI")
-}
 
 function removeCorrectMatches(divToRemoveOne, divToRemoveTwo){
     let addColorToArray = document.getElementById(divToRemoveOne).textContent;
