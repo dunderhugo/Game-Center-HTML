@@ -26,12 +26,9 @@ for (let i = 0; i < gameBoard.children.length; i+=2){
 }
 
 //TODO: Display: flex instead of "block"
-function viewsBtn(btnPressed){
-    btnPressed.style.display = "block";
-}
-document.getElementById("rulesBtn").addEventListener("click", () => viewsBtn(rulesDiv));
-document.getElementById("highScoreBtn").addEventListener("click", () => viewsBtn(highScoreDiv));
-document.getElementById("startBtn").addEventListener("click", ()=> viewsBtn(gameBoardDiv));
+document.getElementById("rulesBtn").addEventListener("click", () => rulesDiv.style.display = "block");
+document.getElementById("highScoreBtn").addEventListener("click", () => highScoreDiv.style.display = "block");
+document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "block");
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
 
