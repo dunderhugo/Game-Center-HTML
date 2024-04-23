@@ -2,7 +2,8 @@ var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
 var gameBoard = document.getElementById("gameBoard");
-var memoryArr = ["blue", "green", "yellow", "pink", "brown"]
+var memoryArr = ["blue", "green", "yellow", "pink", "red"];
+var flippedCards = [];
 
 document.getElementById("addCardBtn").addEventListener("click", function(){
     var newCard = document.createElement("div");
@@ -14,8 +15,6 @@ document.getElementById("addCardBtn").addEventListener("click", function(){
 });
 
 // Changes the textContent of cards
-var indexColorCardChange = 0;
-
 for (let i = 0; i < gameBoard.children.length; i+=2){
     let matchCardOne = document.getElementById("card" + i);
     let matchCardTwo = document.getElementById("card" + (i + 1));
@@ -26,21 +25,13 @@ for (let i = 0; i < gameBoard.children.length; i+=2){
     console.log(memoryArr)
 }
 
-// Do i need this function?
+//TODO: Display: flex instead of "block"
 function viewsBtn(btnPressed){
-    if (btnPressed.style.display === "none" || btnPressed.style.display === "")
-    {
-        btnPressed.style.display = "block";
-    } 
-    else 
-    {
-        btnPressed.style.display = "none";
-    }
+    btnPressed.style.display = "block";
 }
 document.getElementById("rulesBtn").addEventListener("click", () => viewsBtn(rulesDiv));
 document.getElementById("highScoreBtn").addEventListener("click", () => viewsBtn(highScoreDiv));
 document.getElementById("startBtn").addEventListener("click", ()=> viewsBtn(gameBoardDiv));
-//TODO: Display: flex instead of "none"
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
 
@@ -48,8 +39,35 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('gameBoard').addEventListener('click', function(event) {
         if (event.target.classList.contains('gameCard')) {
             var cardId = event.target.id;
-            console.log(cardId, event.target.textContent);
             colorCardChange(cardId)
+            if (flippedCards.length < 1)
+            {
+                flippedCards[0] = cardId;
+                checkCard = event.target.textContent;
+                console.log(flippedCards)
+            }
+            else if (flippedCards[0] === cardId) 
+            {
+                window.alert("Card is already showing")
+            }
+            else 
+            {
+                if(checkCard === event.target.textContent)
+                {
+                    setTimeout(function(){
+                        window.alert("Correct")
+                    },100);
+                    flippedCards = [];
+                }
+                else if(checkCard !== event.target.textContent)
+                {
+                    setTimeout(function(){
+                        window.alert("No match")
+                    },100);
+                    flippedCards = [];
+                }
+            }
+            console.log(cardId, event.target.textContent);
         }
     });
 });
@@ -70,8 +88,8 @@ function colorCardChange(card){
         case "pink":
             cardToChange.style.backgroundColor = "pink";
             break;
-        case "brown":
-            cardToChange.style.backgroundColor = "brown";
+        case "red":
+            cardToChange.style.backgroundColor = "red";
             break;
         default:
             break;
