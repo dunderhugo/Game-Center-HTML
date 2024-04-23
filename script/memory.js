@@ -22,15 +22,21 @@ var nextCardMustMatch = false;
 function cardsToColumn(amountOfCards){
     if (amountOfCards === 2)
     {
-
+        spawnCard(column0);
+        spawnCard(column1);
     }
     else if (amountOfCards === 3)
     {
-
+        spawnCard(column0);
+        spawnCard(column1);
+        spawnCard(column2);
     }
     else 
     {
-
+        spawnCard(column0);
+        spawnCard(column1);
+        spawnCard(column2);
+        spawnCard(column3);
     }
 }
 var nextCardColor;
@@ -56,8 +62,13 @@ function spawnCard(columnToSpawn){
     console.log(newCard)
 }
 document.getElementById("addCardBtn").addEventListener("click", function(){
-    spawnCard(column0);
-    spawnCard(column1);
+    cardsToColumn(2);
+})
+document.getElementById("addCardBtn1").addEventListener("click", function(){
+    cardsToColumn(3);
+})
+document.getElementById("addCardBtn2").addEventListener("click", function(){
+    cardsToColumn(4);
 })
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -93,7 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     turnsPlayed++;
                     if (turnsPlayed == 3)
                     {
-                        addCardsToColumn();
+                        spawnCard(column0);
+                        spawnCard(column1);
                     }
                 }, 500)
             }
