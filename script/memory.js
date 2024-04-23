@@ -7,6 +7,10 @@ document.getElementById("addCardBtn").addEventListener("click", function(){
     var newCard = document.createElement("div");
     newCard.id = "card" + gameBoard.children.length;
     newCard.className = "gameCard";
+    var newSpan = document.createElement("span");
+    newSpan.textContent = "5";
+    newSpan.style.display = "none";
+    newCard.appendChild(newSpan);
     gameBoard.appendChild(newCard);
     console.log(newCard);
 });
@@ -40,32 +44,32 @@ document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDi
 
 
 // For testing, change later
-function colorCardChange(card){
-    if (card.textContent === "1"){
-        card.style.backgroundColor = "black";
-    }
-    if (card.textContent === "2"){
-        card.style.backgroundColor = "green";
-    }
-    if (card.textContent === "3"){
-        card.style.backgroundColor = "yellow";
-    }
-    if (card.textContent === "4"){
-        card.style.backgroundColor = "pink";
-    }
-    if (card.textContent === "8"){
-        card.style.backgroundColor = "grey";
-    }
-}
-var card0 = document.querySelector("#card0");
-var card1 = document.querySelector("#card1");
-var card2 = document.querySelector("#card2");
-var card3 = document.querySelector("#card3");
-var card4 = document.querySelector("#card4");
-var card5 = document.querySelector("#card5");
-colorCardChange(card0);
-colorCardChange(card1);
-colorCardChange(card2);
-colorCardChange(card3);
-colorCardChange(card4);
-colorCardChange(card5);
+// function colorCardChange(card){
+//     if (card.textContent === "1"){
+//         card.style.backgroundColor = "black";
+//     }
+//     if (card.textContent === "2"){
+//         card.style.backgroundColor = "green";
+//     }
+//     if (card.textContent === "3"){
+//         card.style.backgroundColor = "yellow";
+//     }
+//     if (card.textContent === "4"){
+//         card.style.backgroundColor = "pink";
+//     }
+//     if (card.textContent === "5"){
+//         card.style.backgroundColor = "grey";
+//     }
+// }
+// var card0 = document.querySelector("#card0");
+// var card1 = document.querySelector("#card1");
+// var card2 = document.querySelector("#card2");
+// var card3 = document.querySelector("#card3");
+// var card4 = document.querySelector("#card4");
+// var card5 = document.querySelector("#card5");
+// colorCardChange(card0);
+// colorCardChange(card1);
+// colorCardChange(card2);
+// colorCardChange(card3);
+// colorCardChange(card4);
+// colorCardChange(card5);
