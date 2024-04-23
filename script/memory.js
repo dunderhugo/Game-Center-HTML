@@ -56,19 +56,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function colorCardChange(card){
     let cardToChange = document.getElementById(card);
-    if (cardToChange.textContent === "blue"){
-        cardToChange.style.backgroundColor = "blue";
-    }
-    if (cardToChange.textContent === "green"){
-        cardToChange.style.backgroundColor = "green";
-    }
-    if (cardToChange.textContent === "yellow"){
-        cardToChange.style.backgroundColor = "yellow";
-    }
-    if (cardToChange.textContent === "pink"){
-        cardToChange.style.backgroundColor = "pink";
-    }
-    if (cardToChange.textContent === "brown"){
-        cardToChange.style.backgroundColor = "brown";
+    switch (cardToChange.textContent) 
+    {
+        case "blue":
+            cardToChange.style.backgroundColor = "blue";
+            break;
+        case "green":
+            cardToChange.style.backgroundColor = "green";
+            break;
+        case "yellow":
+            cardToChange.style.backgroundColor = "yellow";
+            break;
+        case "pink":
+            cardToChange.style.backgroundColor = "pink";
+            break;
+        case "brown":
+            cardToChange.style.backgroundColor = "brown";
+            break;
+        default:
+            break;
     }
 }
