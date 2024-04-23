@@ -109,7 +109,7 @@ html, body {
     z-index: 999;
 }
 .gameCard{
-    background-color: red;
+    background-color: hsl(0, 0%, 50%);
     height: 150px;
     width: 100px;
     border-radius: 10px;
@@ -117,7 +117,7 @@ html, body {
     margin: 10px;
 }
 .gameCard:hover{
-    background-color: blue;
+    background-color: hsl(0, 0%, 75%);
     cursor: pointer;
 }
 #gameBoard{

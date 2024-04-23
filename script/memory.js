@@ -39,38 +39,27 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('gameBoard').addEventListener('click', function(event) {
         if (event.target.classList.contains('gameCard')) {
             var cardId = event.target.id;
-            console.log(cardId, event.target.className);
+            console.log(cardId, event.target.textContent);
+            colorCardChange(cardId)
         }
     });
 });
 
-// For testing, change later
-// function colorCardChange(card){
-//     if (card.textContent === "1"){
-//         card.style.backgroundColor = "black";
-//     }
-//     if (card.textContent === "2"){
-//         card.style.backgroundColor = "green";
-//     }
-//     if (card.textContent === "3"){
-//         card.style.backgroundColor = "yellow";
-//     }
-//     if (card.textContent === "4"){
-//         card.style.backgroundColor = "pink";
-//     }
-//     if (card.textContent === "5"){
-//         card.style.backgroundColor = "grey";
-//     }
-// }
-// var card0 = document.querySelector("#card0");
-// var card1 = document.querySelector("#card1");
-// var card2 = document.querySelector("#card2");
-// var card3 = document.querySelector("#card3");
-// var card4 = document.querySelector("#card4");
-// var card5 = document.querySelector("#card5");
-// colorCardChange(card0);
-// colorCardChange(card1);
-// colorCardChange(card2);
-// colorCardChange(card3);
-// colorCardChange(card4);
-// colorCardChange(card5);
+function colorCardChange(card){
+    let cardToChange = document.getElementById(card);
+    if (cardToChange.textContent === "1"){
+        cardToChange.style.backgroundColor = "black";
+    }
+    if (cardToChange.textContent === "2"){
+        cardToChange.style.backgroundColor = "green";
+    }
+    if (cardToChange.textContent === "3"){
+        cardToChange.style.backgroundColor = "yellow";
+    }
+    if (cardToChange.textContent === "4"){
+        cardToChange.style.backgroundColor = "pink";
+    }
+    if (cardToChange.textContent === "5"){
+        cardToChange.style.backgroundColor = "grey";
+    }
+}
