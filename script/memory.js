@@ -57,17 +57,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     flippedCards[1] = cardId;
                     setTimeout(function(){
                         window.alert("Correct")
-                    },100);
-                    removeCorrectMatches(flippedCards[0]);
-                    removeCorrectMatches(flippedCards[1]);
-                    flippedCards = [];
+                        removeCorrectMatches(flippedCards[0], flippedCards[1]);
+                        flippedCards = [];
+                    },500);
                 }
                 else if(checkCard !== event.target.textContent)
                 {
-                    setTimeout(function(){
-                        window.alert("No match")
-                    },100);
-                    flippedCards = [];
+                    flippedCards[1] = cardId;
+                    setTimeout(function() {
+                        window.alert("No match");
+                        changeToDefaultColor(flippedCards[0], flippedCards[1]);
+                        flippedCards = [];
+                    }, 500);
                 }
             }
             console.log(cardId, event.target.textContent);
@@ -75,9 +76,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function removeCorrectMatches(divToRemove){
-    var removeDiv = document.getElementById(divToRemove)
-    removeDiv.remove(); 
+function removeCorrectMatches(divToRemoveOne, divToRemoveTwo){
+    var removeDivOne = document.getElementById(divToRemoveOne)
+    var removeDivTwo = document.getElementById(divToRemoveTwo)
+    removeDivOne.remove(); 
+    removeDivTwo.remove();
+}
+
+function changeToDefaultColor(colorOne, colorTwo){
+    var removeOne = document.getElementById(colorOne)
+    var removeTwo = document.getElementById(colorTwo)
+    removeOne.style.backgroundColor = "";
+    removeTwo.style.backgroundColor = "";
 }
 
 function colorCardChange(card){
