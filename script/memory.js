@@ -15,7 +15,13 @@ document.getElementById("addCardBtn").addEventListener("click", function(){
     console.log(newCard);
 });
 
-
+for (let i = 0; i < gameBoard.children.length; i++){
+    let cardToAppendSpan = document.getElementById("card" + i);
+    var newSpan = document.createElement("span");
+    newSpan.textContent = "5";
+    newSpan.style.display = "none";
+    cardToAppendSpan.appendChild(newSpan);
+}
 
 // Do i need this function?
 function viewsBtn(btnPressed){
@@ -35,13 +41,14 @@ document.getElementById("startBtn").addEventListener("click", ()=> viewsBtn(game
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
 
-
-// var card0 = document.querySelector("#card0");
-// card0.addEventListener("click", () => {
-//     card0.style.backgroundColor = "black"
-// });
-
-
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('gameBoard').addEventListener('click', function(event) {
+        if (event.target.classList.contains('gameCard')) {
+            var cardId = event.target.id;
+            console.log(cardId, event.target.className, event.target.children);
+        }
+    });
+});
 
 // For testing, change later
 // function colorCardChange(card){
