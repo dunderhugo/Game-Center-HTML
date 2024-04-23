@@ -65,12 +65,12 @@ html, body {
 
 .scoreNumber {
     display: inline-block;
-    width: 20px; /* Adjust width as needed */
+    width: 20px;
 }
 
 .playerName {
     display: inline-block;
-    margin-left: 10px; /* Adjust margin as needed */
+    margin-left: 10px;
 }
 
 
@@ -94,7 +94,9 @@ html, body {
 }
 
 /* GAME BOARD CONTENT */
-
+/*  TODO: Fix layout so it fits borth on mobile & PC 
+    TODO: Change layout if level 1, 2, 3
+    TODO: Add animations when cars spawn*/
 .cardBtn{
     height: 50px;
     width: 100px;
@@ -124,9 +126,6 @@ html, body {
 #gameBoard{
     background-color: azure;
     display: flex;
-    /* display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(3, 1fr); */
     height: 600px;
     width: 375px;
 }

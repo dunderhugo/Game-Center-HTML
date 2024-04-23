@@ -1,3 +1,4 @@
+// TODO: Add 3 levels to game
 var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
@@ -12,13 +13,15 @@ document.getElementById("highScoreBtn").addEventListener("click", () => highScor
 document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "block");
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
-// Need 12 different colors
+// TODO: Need 12 different colors
 var memoryArr = ["blue", "green", "yellow", "pink", "red"];
 var flippedCards = [];
 var turnsPlayed = 0;
+//TODO: Get points depending on how many rows are empty when level is completed
 var points = 0;
 var nextCardMustMatch = false;
 
+//TODO: Add random placement on cards when they spawn
 function cardsToColumn(amountOfCards){
     if (amountOfCards === 2)
     {
@@ -90,6 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(function(){
                     if(checkCard === event.target.textContent)
                     {
+                        //TODO: remove window alert, use something else when cards
+                        // are correct or not
                         window.alert("Correct")
                         points += 1000;
                         removeCorrectMatches(flippedCards[0], flippedCards[1]);
@@ -120,6 +125,7 @@ function gameOver(){
             var toManyCards = true;
         }
     }
+    // TODO: Add a view instead of window.alert 
     if (toManyCards) window.alert("GameOver");
 }
 function removeCorrectMatches(divToRemoveOne, divToRemoveTwo){
