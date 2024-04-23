@@ -2,6 +2,7 @@ var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
 var gameBoard = document.getElementById("gameBoard");
+// Need 12 different colors
 var memoryArr = ["blue", "green", "yellow", "pink", "red"];
 var flippedCards = [];
 
@@ -32,6 +33,7 @@ document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
 
+//TODO: Refactor
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('gameBoard').addEventListener('click', function(event) {
         if (event.target.classList.contains('gameCard')) {
@@ -41,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
             {
                 flippedCards[0] = cardId;
                 checkCard = event.target.textContent;
-                console.log(flippedCards)
             }
             else if (flippedCards[0] === cardId)
             {
@@ -55,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(function(){
                         window.alert("Correct")
                         removeCorrectMatches(flippedCards[0], flippedCards[1]);
-                        flippedCards = [];
                     },500);
                 }
                 else if(checkCard !== event.target.textContent)
@@ -64,11 +64,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(function() {
                         window.alert("No match");
                         changeToDefaultColor(flippedCards[0], flippedCards[1]);
-                        flippedCards = [];
                     }, 500);
                 }
+                flippedCards = [];
             }
-            console.log(cardId, event.target.textContent);
         }
     });
 });
