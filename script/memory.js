@@ -2,19 +2,28 @@ var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
 var gameBoard = document.getElementById("gameBoard");
-var memoryArr = ["1", "2", "3", "4", "5"]
+var memoryArr = ["blue", "green", "yellow", "pink", "brown"]
 
 document.getElementById("addCardBtn").addEventListener("click", function(){
     var newCard = document.createElement("div");
     newCard.id = "card" + gameBoard.children.length;
     newCard.className = "gameCard";
+    newCard.textContent = "2";
     gameBoard.appendChild(newCard);
     console.log(newCard);
 });
 
-for (let i = 0; i < gameBoard.children.length; i++){
-    let cardTextContent = document.getElementById("card" + i);
-    cardTextContent.textContent = "1";
+// Changes the textContent of cards
+var indexColorCardChange = 0;
+
+for (let i = 0; i < gameBoard.children.length; i+=2){
+    let matchCardOne = document.getElementById("card" + i);
+    let matchCardTwo = document.getElementById("card" + (i + 1));
+    let randomColor = Math.floor(Math.random() * memoryArr.length)
+    matchCardOne.textContent = memoryArr[randomColor];
+    matchCardTwo.textContent = memoryArr[randomColor];
+    memoryArr.splice(randomColor, 1)[0];
+    console.log(memoryArr)
 }
 
 // Do i need this function?
@@ -47,19 +56,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function colorCardChange(card){
     let cardToChange = document.getElementById(card);
-    if (cardToChange.textContent === "1"){
-        cardToChange.style.backgroundColor = "black";
+    if (cardToChange.textContent === "blue"){
+        cardToChange.style.backgroundColor = "blue";
     }
-    if (cardToChange.textContent === "2"){
+    if (cardToChange.textContent === "green"){
         cardToChange.style.backgroundColor = "green";
     }
-    if (cardToChange.textContent === "3"){
+    if (cardToChange.textContent === "yellow"){
         cardToChange.style.backgroundColor = "yellow";
     }
-    if (cardToChange.textContent === "4"){
+    if (cardToChange.textContent === "pink"){
         cardToChange.style.backgroundColor = "pink";
     }
-    if (cardToChange.textContent === "5"){
-        cardToChange.style.backgroundColor = "grey";
+    if (cardToChange.textContent === "brown"){
+        cardToChange.style.backgroundColor = "brown";
     }
 }
