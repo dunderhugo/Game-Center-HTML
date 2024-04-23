@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 checkCard = event.target.textContent;
                 console.log(flippedCards)
             }
-            else if (flippedCards[0] === cardId) 
+            else if (flippedCards[0] === cardId)
             {
                 window.alert("Card is already showing")
             }
@@ -54,9 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
             {
                 if(checkCard === event.target.textContent)
                 {
+                    flippedCards[1] = cardId;
                     setTimeout(function(){
                         window.alert("Correct")
                     },100);
+                    removeCorrectMatches(flippedCards[0]);
+                    removeCorrectMatches(flippedCards[1]);
                     flippedCards = [];
                 }
                 else if(checkCard !== event.target.textContent)
@@ -71,6 +74,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function removeCorrectMatches(divToRemove){
+    var removeDiv = document.getElementById(divToRemove)
+    removeDiv.remove(); 
+}
 
 function colorCardChange(card){
     let cardToChange = document.getElementById(card);
