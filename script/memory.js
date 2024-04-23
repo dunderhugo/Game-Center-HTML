@@ -2,7 +2,13 @@ var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
 var gameBoard = document.getElementById("gameBoard");
-// Need 12 different colors
+//TODO: Display: flex instead of "block"
+document.getElementById("rulesBtn").addEventListener("click", () => rulesDiv.style.display = "block");
+document.getElementById("highScoreBtn").addEventListener("click", () => highScoreDiv.style.display = "block");
+document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "block");
+document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
+document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
+// Need 12 different
 var memoryArr = ["blue", "green", "yellow", "pink", "red"];
 var flippedCards = [];
 
@@ -26,14 +32,6 @@ for (let i = 0; i < gameBoard.children.length; i+=2){
     console.log(memoryArr)
 }
 
-//TODO: Display: flex instead of "block"
-document.getElementById("rulesBtn").addEventListener("click", () => rulesDiv.style.display = "block");
-document.getElementById("highScoreBtn").addEventListener("click", () => highScoreDiv.style.display = "block");
-document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "block");
-document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
-document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
-
-//TODO: Refactor
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('gameBoard').addEventListener('click', function(event) {
         if (event.target.classList.contains('gameCard')) {
@@ -43,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             {
                 flippedCards[0] = cardId;
                 checkCard = event.target.textContent;
+                console.log(flippedCards)
             }
             else if (flippedCards[0] === cardId)
             {
@@ -50,23 +49,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             else 
             {
-                if(checkCard === event.target.textContent)
-                {
-                    flippedCards[1] = cardId;
-                    setTimeout(function(){
+                flippedCards[1] = cardId;
+                setTimeout(function(){
+                    if(checkCard === event.target.textContent)
+                    {
                         window.alert("Correct")
                         removeCorrectMatches(flippedCards[0], flippedCards[1]);
-                    },500);
-                }
-                else if(checkCard !== event.target.textContent)
-                {
-                    flippedCards[1] = cardId;
-                    setTimeout(function() {
+                    }
+                    else if(checkCard !== event.target.textContent)
+                    {
                         window.alert("No match");
                         changeToDefaultColor(flippedCards[0], flippedCards[1]);
-                    }, 500);
-                }
-                flippedCards = [];
+                    }
+                    flippedCards = [];
+                }, 500)
+                
             }
         }
     });
