@@ -59,7 +59,6 @@ function spawnCard(columnToSpawn){
         nextCardMustMatch = false;
     }
     columnToSpawn.appendChild(newCard);
-    console.log(newCard)
 }
 document.getElementById("addCardBtn").addEventListener("click", function(){
     cardsToColumn(2);
@@ -106,13 +105,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     {
                         spawnCard(column0);
                         spawnCard(column1);
+                        gameOver();
                     }
                 }, 500)
             }
         }
     });
 });
-
+function gameOver(){
+    for(let i = 0; i < 4; i++)
+    {
+        let checkColumn = document.querySelector("#column" + i).children.length;
+        if(checkColumn >= 4){
+            var toManyCards = true;
+        }
+    }
+    if (toManyCards) window.alert("GameOver");
+}
 function removeCorrectMatches(divToRemoveOne, divToRemoveTwo){
     let addColorToArray = document.getElementById(divToRemoveOne).textContent;
     memoryArr.push(addColorToArray);
