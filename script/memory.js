@@ -8,10 +8,11 @@ document.getElementById("highScoreBtn").addEventListener("click", () => highScor
 document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "block");
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
-// Need 12 different
+// Need 12 different colors
 var memoryArr = ["blue", "green", "yellow", "pink", "red"];
 var flippedCards = [];
 var turnsPlayed = 0;
+var points = 0;
 
 document.getElementById("addCardBtn").addEventListener("click", function(){
     var newCard = document.createElement("div");
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if(checkCard === event.target.textContent)
                     {
                         window.alert("Correct")
+                        points += 1000;
                         removeCorrectMatches(flippedCards[0], flippedCards[1]);
                     }
                     else if(checkCard !== event.target.textContent)
