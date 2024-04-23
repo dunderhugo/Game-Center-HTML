@@ -95,9 +95,9 @@ html, body {
 
 /* GAME BOARD CONTENT */
 
-#addCardBtn{
-    height: 100px;
-    width: 200px;
+.cardBtn{
+    height: 50px;
+    width: 100px;
 }
 
 #gameBoardDiv{
@@ -123,9 +123,17 @@ html, body {
 }
 #gameBoard{
     background-color: azure;
-    display: grid;
+    display: flex;
+    /* display: grid;
     grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr); */
     height: 600px;
     width: 375px;
+}
+
+.columnGameBoard{
+    background-color: white;
+    border-style: dashed;
+    display: flex;
+    flex-direction: column-reverse;
 }

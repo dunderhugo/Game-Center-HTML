@@ -16,22 +16,26 @@ var points = 0;
 
 document.getElementById("addCardBtn").addEventListener("click", function(){
     var newCard = document.createElement("div");
-    newCard.id = "card" + gameBoard.children.length;
+    newCard.id = "card" + countGameCard;
     newCard.className = "gameCard";
-    newCard.textContent = "2";
+    newCard.textContent = "blue";
     gameBoard.appendChild(newCard);
     console.log(newCard);
 });
 
 // Changes the textContent of cards
-for (let i = 0; i < gameBoard.children.length; i+=2){
-    let matchCardOne = document.getElementById("card" + i);
-    let matchCardTwo = document.getElementById("card" + (i + 1));
-    let randomColor = Math.floor(Math.random() * memoryArr.length)
-    matchCardOne.textContent = memoryArr[randomColor];
-    matchCardTwo.textContent = memoryArr[randomColor];
-    memoryArr.splice(randomColor, 1)[0];
-}
+var countGameCard = document.querySelectorAll('.gameCard').length;
+// for (let i = i; i < countGameCard; i++){
+
+// }
+// for (let i = 0; i < gameBoard.children.length; i+=2){
+//     let matchCardOne = document.getElementById("card" + i);
+//     let matchCardTwo = document.getElementById("card" + (i + 1));
+//     let randomColor = Math.floor(Math.random() * memoryArr.length)
+//     matchCardOne.textContent = memoryArr[randomColor];
+//     matchCardTwo.textContent = memoryArr[randomColor];
+//     memoryArr.splice(randomColor, 1)[0];
+// }
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('gameBoard').addEventListener('click', function(event) {
