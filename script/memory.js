@@ -12,9 +12,6 @@ document.getElementById("highScoreBtn").addEventListener("click", () => highScor
 document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "block");
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
-document.getElementById("addCardBtn").addEventListener("click", function(){ cardsToColumn(2);});
-document.getElementById("addCardBtn1").addEventListener("click", function(){ cardsToColumn(3);});
-document.getElementById("addCardBtn2").addEventListener("click", function(){ cardsToColumn(4);});
 var memoryArr = ["blue", "green", "yellow", "pink", "red", "purple", "orange", "cyan", "magenta", "teal", "lime", "indigo"];
 var flippedCards = [];
 var turnsPlayed = 0;
@@ -23,6 +20,19 @@ var currentLevelPoints = 0;
 var totalPoints = 0;
 var nextCardMustMatch = false;
 var currentLevel = 0;
+//TEMPORARY BTNS
+document.getElementById("addCardBtn").addEventListener("click", function(){ cardsToColumn(2);});
+document.getElementById("addCardBtn1").addEventListener("click", function(){ cardsToColumn(3);});
+document.getElementById("addCardBtn2").addEventListener("click", function(){ cardsToColumn(4);});
+document.getElementById("showCardId").addEventListener("click", function (){listGameCards();});
+//Lists all cards
+function listGameCards() 
+{
+    document.querySelectorAll('.gameCard').forEach(function(card) {
+        console.log(card);
+    });
+}
+
 
 levelToPlay();
 var checkCard;
@@ -119,6 +129,28 @@ function nextLevel()
     }
 }
 
+function shuffleCardPlacement(currentLevel) {
+    if (currentLevel === 0) 
+    {
+        let cardShuffleArr = []; 
+        let gameCards = document.querySelectorAll('.gameCard');
+        gameCards.forEach((card) => 
+        {
+            cardShuffleArr.push(card);
+            card.remove();
+        });
+        cardShuffleArr.sort(() => Math.random() - 0.5);
+        cardShuffleArr.forEach((card, index) => 
+        {
+            if (index % 2 === 0) {
+                column0.appendChild(card);
+            } else {
+                column1.appendChild(card);
+            }
+        });
+    }
+}
+
 function cardsToColumn(amountOfCards)
 {
     //TODO: Add random placement on cards when they spawn
@@ -149,6 +181,7 @@ function levelToPlay()
         cardsToColumn(2);
         cardsToColumn(2);
         cardsToColumn(2);
+        shuffleCardPlacement(currentLevel);
     }
     else if(currentLevel === 1) 
     {
