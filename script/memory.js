@@ -2,6 +2,9 @@
 var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
+var currentLevelDisplay = document.querySelector("#currentLevel");
+var levelScoreDisplay = document.querySelector("#levelScore");
+var totalScoreDisplay = document.querySelector("#totalScore")
 var column0 = document.querySelector("#column0");
 var column1 = document.querySelector("#column1");
 var column2 = document.querySelector("#column2");
@@ -20,6 +23,7 @@ var currentLevelPoints = 0;
 var totalPoints = 0;
 var nextCardMustMatch = false;
 var currentLevel = 0;
+var clearedCurrentLevel = false;
 //TEMPORARY BTNS
 document.getElementById("addCardBtn").addEventListener("click", function(){ cardsToColumn(2);});
 document.getElementById("addCardBtn1").addEventListener("click", function(){ cardsToColumn(3);});
@@ -34,7 +38,7 @@ function listGameCards()
 }
 
 
-levelToPlay();
+levelToPlay(currentLevel);
 var checkCard;
 document.addEventListener('DOMContentLoaded', function() 
 {
@@ -64,6 +68,8 @@ document.addEventListener('DOMContentLoaded', function()
                         // are correct or not
                         window.alert("Correct");
                         currentLevelPoints += 1000;
+                        levelScoreDisplay.textContent = currentLevelPoints;
+
                         removeCorrectMatches(flippedCards[0], flippedCards[1]);
                         nextLevel();
                     }
@@ -74,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function()
                     }
                     flippedCards = [];
                     turnsPlayed++;
-                    if (turnsPlayed == 3)
+                    if (turnsPlayed == 3 && clearedCurrentLevel === false)
                     {
                         spawnCard(column0);
                         spawnCard(column1);
@@ -113,7 +119,6 @@ function spawnCard(columnToSpawn)
 
 function nextLevel()
 {
-    console.log("Total points: "+ totalPoints, "Round points: " + currentLevelPoints);
     if (currentLevelPoints >= 3000)
     {
         if (currentLevel === 2)
@@ -123,9 +128,19 @@ function nextLevel()
         }
         else
         {
+            clearedCurrentLevel = true;
             currentLevel++;
+            currentLevelDisplay.textContent = currentLevel;
             totalPoints += currentLevelPoints;
+            totalScoreDisplay.textContent = totalPoints;
             currentLevelPoints = 0;
+            levelScoreDisplay.textContent = currentLevelPoints;
+            let gameCards = document.querySelectorAll('.gameCard');
+            gameCards.forEach((card) => 
+            {
+                card.remove();
+            });
+            levelToPlay(currentLevel);
         }
     }
 }
@@ -216,7 +231,7 @@ function cardsToColumn(amountOfCards)
     }
 }
 
-function levelToPlay()
+function levelToPlay(currentLevel)
 {
     if (currentLevel === 0)
     {
