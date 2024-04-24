@@ -19,6 +19,7 @@ var turnsPlayed = 0;
 //TODO: Get points depending on how many rows are empty when level is completed
 var points = 0;
 var nextCardMustMatch = false;
+var currentLevel = 0;
 
 //TODO: Add random placement on cards when they spawn
 //TODO: change to arrow function: () =>?
@@ -116,6 +117,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function nextLevel()
+{
+    if (points >= 3000)
+    {
+        if (currentLevel === 2)
+        {
+            //Add view
+            window.alert("You win!");
+        }
+        else
+        {
+            currentLevel++;
+        }
+    }
+}
 function gameOver()
 {
     for(let i = 0; i < 4; i++)
