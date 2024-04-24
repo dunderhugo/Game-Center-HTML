@@ -2,7 +2,6 @@
 var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
-var gameBoard = document.getElementById("gameBoard");
 var column0 = document.querySelector("#column0");
 var column1 = document.querySelector("#column1");
 var column2 = document.querySelector("#column2");
@@ -22,7 +21,9 @@ var points = 0;
 var nextCardMustMatch = false;
 
 //TODO: Add random placement on cards when they spawn
-function cardsToColumn(amountOfCards){
+//TODO: change to arrow function: () =>?
+function cardsToColumn(amountOfCards)
+{
     if (amountOfCards === 2)
     {
         spawnCard(column0);
@@ -43,7 +44,8 @@ function cardsToColumn(amountOfCards){
     }
 }
 var nextCardColor;
-function spawnCard(columnToSpawn){
+function spawnCard(columnToSpawn)
+{
     var countGameCard = document.querySelectorAll('.gameCard').length;
     var newCard = document.createElement("div");
     newCard.id = "card" + countGameCard;
@@ -63,21 +65,16 @@ function spawnCard(columnToSpawn){
     }
     columnToSpawn.appendChild(newCard);
 }
-document.getElementById("addCardBtn").addEventListener("click", function(){
-    cardsToColumn(2);
-})
-document.getElementById("addCardBtn1").addEventListener("click", function(){
-    cardsToColumn(3);
-})
-document.getElementById("addCardBtn2").addEventListener("click", function(){
-    cardsToColumn(4);
-})
-
+document.getElementById("addCardBtn").addEventListener("click", function(){ cardsToColumn(2);});
+document.getElementById("addCardBtn1").addEventListener("click", function(){ cardsToColumn(3);});
+document.getElementById("addCardBtn2").addEventListener("click", function(){ cardsToColumn(4);});
+var checkCard;
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('gameBoard').addEventListener('click', function(event) {
+    document.getElementById('gameBoard').addEventListener('click', function(event) 
+    {
         if (event.target.classList.contains('gameCard')) {
             var cardId = event.target.id;
-            colorCardChange(cardId)
+            colorCardChange(cardId);
             if (flippedCards.length < 1)
             {
                 flippedCards[0] = cardId;
@@ -85,17 +82,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             else if (flippedCards[0] === cardId)
             {
-                window.alert("Card is already showing")
+                window.alert("Card is already showing");
             }
             else 
             {
                 flippedCards[1] = cardId;
-                setTimeout(function(){
+                setTimeout(function()
+                {
                     if(checkCard === event.target.textContent)
                     {
                         //TODO: remove window alert, use something else when cards
                         // are correct or not
-                        window.alert("Correct")
+                        window.alert("Correct");
                         points += 1000;
                         removeCorrectMatches(flippedCards[0], flippedCards[1]);
                     }
@@ -112,12 +110,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         spawnCard(column1);
                         gameOver();
                     }
-                }, 500)
+
+                }, 500);
             }
         }
     });
 });
-function gameOver(){
+function gameOver()
+{
     for(let i = 0; i < 4; i++)
     {
         let checkColumn = document.querySelector("#column" + i).children.length;
@@ -128,23 +128,26 @@ function gameOver(){
     // TODO: Add a view instead of window.alert 
     if (toManyCards) window.alert("GameOver");
 }
-function removeCorrectMatches(divToRemoveOne, divToRemoveTwo){
+function removeCorrectMatches(divToRemoveOne, divToRemoveTwo)
+{
     let addColorToArray = document.getElementById(divToRemoveOne).textContent;
     memoryArr.push(addColorToArray);
-    var removeDivOne = document.getElementById(divToRemoveOne)
-    var removeDivTwo = document.getElementById(divToRemoveTwo)
+    var removeDivOne = document.getElementById(divToRemoveOne);
+    var removeDivTwo = document.getElementById(divToRemoveTwo);
     removeDivOne.remove(); 
     removeDivTwo.remove();
 }
 
-function changeToDefaultColor(colorOne, colorTwo){
-    var removeOne = document.getElementById(colorOne)
-    var removeTwo = document.getElementById(colorTwo)
+function changeToDefaultColor(colorOne, colorTwo)
+{
+    var removeOne = document.getElementById(colorOne);
+    var removeTwo = document.getElementById(colorTwo);
     removeOne.style.backgroundColor = "";
     removeTwo.style.backgroundColor = "";
 }
 
-function colorCardChange(card){
+function colorCardChange(card)
+{
     let cardToChange = document.getElementById(card);
     switch (cardToChange.textContent) 
     {
