@@ -12,8 +12,7 @@ document.getElementById("highScoreBtn").addEventListener("click", () => highScor
 document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "block");
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
-// TODO: Need 12 different colors
-var memoryArr = ["blue", "green", "yellow", "pink", "red"];
+var memoryArr = ["blue", "green", "yellow", "pink", "red", "purple", "orange", "cyan", "magenta", "teal", "lime", "indigo"];
 var flippedCards = [];
 var turnsPlayed = 0;
 //TODO: Get points depending on how many rows are empty when level is completed
@@ -21,9 +20,10 @@ var currentLevelPoints = 0;
 var totalPoints = 0;
 var nextCardMustMatch = false;
 var currentLevel = 0;
-
+levelToPlay();
 //TODO: Add random placement on cards when they spawn
 //TODO: change to arrow function: () =>?
+
 function cardsToColumn(amountOfCards)
 {
     if (amountOfCards === 2)
@@ -71,10 +71,12 @@ document.getElementById("addCardBtn").addEventListener("click", function(){ card
 document.getElementById("addCardBtn1").addEventListener("click", function(){ cardsToColumn(3);});
 document.getElementById("addCardBtn2").addEventListener("click", function(){ cardsToColumn(4);});
 var checkCard;
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() 
+{
     document.getElementById('gameBoard').addEventListener('click', function(event) 
     {
-        if (event.target.classList.contains('gameCard')) {
+        if (event.target.classList.contains('gameCard')) 
+        {
             var cardId = event.target.id;
             colorCardChange(cardId);
             if (flippedCards.length < 1)
@@ -139,6 +141,27 @@ function nextLevel()
         }
     }
 }
+function levelToPlay()
+{
+    if (currentLevel === 0)
+    {
+        cardsToColumn(2);
+        cardsToColumn(2);
+        cardsToColumn(2);
+    }
+    else if(currentLevel === 1) 
+    {
+        cardsToColumn(3);
+        cardsToColumn(3);
+        cardsToColumn(3);
+    }
+    else if (currentLevel === 2)
+    {
+        cardsToColumn(4);
+        cardsToColumn(4);
+        cardsToColumn(4);
+    }
+}
 function gameOver()
 {
     for(let i = 0; i < 4; i++)
@@ -168,12 +191,10 @@ function changeToDefaultColor(colorOne, colorTwo)
     removeOne.style.backgroundColor = "";
     removeTwo.style.backgroundColor = "";
 }
-
-function colorCardChange(card)
-{
+//TODO: Refactor
+function colorCardChange(card) {
     let cardToChange = document.getElementById(card);
-    switch (cardToChange.textContent) 
-    {
+    switch (cardToChange.textContent) {
         case "blue":
             cardToChange.style.backgroundColor = "blue";
             break;
@@ -188,6 +209,27 @@ function colorCardChange(card)
             break;
         case "red":
             cardToChange.style.backgroundColor = "red";
+            break;
+        case "purple":
+            cardToChange.style.backgroundColor = "purple";
+            break;
+        case "orange":
+            cardToChange.style.backgroundColor = "orange";
+            break;
+        case "cyan":
+            cardToChange.style.backgroundColor = "cyan";
+            break;
+        case "magenta":
+            cardToChange.style.backgroundColor = "magenta";
+            break;
+        case "teal":
+            cardToChange.style.backgroundColor = "teal";
+            break;
+        case "lime":
+            cardToChange.style.backgroundColor = "lime";
+            break;
+        case "indigo":
+            cardToChange.style.backgroundColor = "indigo";
             break;
         default:
             break;
