@@ -310,48 +310,8 @@ function changeToDefaultColor(colorOne, colorTwo)
     removeTwo.style.backgroundColor = "";
 }
 
-//TODO: Refactor
 function colorCardChange(card) 
 {
     let cardToChange = document.getElementById(card);
-    switch (cardToChange.textContent) {
-        case "blue":
-            cardToChange.style.backgroundColor = "blue";
-            break;
-        case "green":
-            cardToChange.style.backgroundColor = "green";
-            break;
-        case "yellow":
-            cardToChange.style.backgroundColor = "yellow";
-            break;
-        case "pink":
-            cardToChange.style.backgroundColor = "pink";
-            break;
-        case "red":
-            cardToChange.style.backgroundColor = "red";
-            break;
-        case "purple":
-            cardToChange.style.backgroundColor = "purple";
-            break;
-        case "orange":
-            cardToChange.style.backgroundColor = "orange";
-            break;
-        case "cyan":
-            cardToChange.style.backgroundColor = "cyan";
-            break;
-        case "magenta":
-            cardToChange.style.backgroundColor = "magenta";
-            break;
-        case "teal":
-            cardToChange.style.backgroundColor = "teal";
-            break;
-        case "lime":
-            cardToChange.style.backgroundColor = "lime";
-            break;
-        case "indigo":
-            cardToChange.style.backgroundColor = "indigo";
-            break;
-        default:
-            break;
-    }
+    cardToChange.style.backgroundColor = cardToChange.textContent;
 }
