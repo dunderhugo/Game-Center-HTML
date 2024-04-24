@@ -18,7 +18,7 @@ var column3 = document.querySelector("#column3");
 //TODO: Display: flex instead of "block"
 document.getElementById("rulesBtn").addEventListener("click", () => rulesDiv.style.display = "block");
 document.getElementById("highScoreBtn").addEventListener("click", () => highScoreDiv.style.display = "block");
-document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "block");
+document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "flex");
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
 var memoryArr = ["blue", "green", "yellow", "pink", "red", "purple", "orange", "cyan", "magenta", "teal", "lime", "indigo"];
@@ -31,17 +31,7 @@ var nextCardMustMatch = false;
 var currentLevel = 0;
 var clearedCurrentLevel = false;
 //TEMPORARY BTNS
-document.getElementById("addCardBtn").addEventListener("click", function(){ cardsToColumn(2);});
-document.getElementById("addCardBtn1").addEventListener("click", function(){ cardsToColumn(3);});
 document.getElementById("addCardBtn2").addEventListener("click", function(){ cardsToColumn(4);});
-document.getElementById("showCardId").addEventListener("click", function (){listGameCards();});
-//Lists all cards
-function listGameCards() 
-{
-    document.querySelectorAll('.gameCard').forEach(function(card) {
-        console.log(card);
-    });
-}
 
 // Game play
 levelToPlay(currentLevel);

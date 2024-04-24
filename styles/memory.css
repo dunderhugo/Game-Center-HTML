@@ -96,7 +96,7 @@ html, body {
 /* GAME BOARD CONTENT */
 /*  TODO: Fix layout so it fits borth on mobile & PC 
     TODO: Change layout if level 1, 2, 3
-    TODO: Add animations when cars spawn*/
+    TODO: Add animations when cards spawn*/
 .cardBtn{
     height: 50px;
     width: 100px;
@@ -107,17 +107,20 @@ html, body {
     width: 100%;
     display: none;
     position: fixed;
-    background-color: grey;
     z-index: 999;
+    background-color: grey;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .gameCard{
     background-color: hsl(0, 0%, 50%);
     /* color: rgba(0, 0, 0, 0); */
-    height: 150px;
-    width: 100px;
+    min-height: 125px;
+    min-width: 75px;
     border-radius: 10px;
     transition: all 300ms ease;
-    margin: 10px;
+    margin: 5px;
 }
 .gameCard:hover{
     background-color: hsl(0, 0%, 75%);
@@ -126,8 +129,8 @@ html, body {
 #gameBoard{
     background-color: azure;
     display: flex;
-    height: 600px;
-    width: 375px;
+    height: 475px;
+    width: fit-content;
 }
 
 .columnGameBoard{
