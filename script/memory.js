@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function()
                     {
                         spawnCard(column0);
                         spawnCard(column1);
+                        turnsPlayed = 0;
                         gameOver();
                     }
 
@@ -129,26 +130,67 @@ function nextLevel()
     }
 }
 
-function shuffleCardPlacement(currentLevel) {
+function shuffleCardPlacement(currentLevel) 
+{
+    let cardShuffleArr = []; 
+    let gameCards = document.querySelectorAll('.gameCard');
+    gameCards.forEach((card) => 
+    {
+        cardShuffleArr.push(card);
+        card.remove();
+    });
+    cardShuffleArr.sort(() => Math.random() - 0.5);
     if (currentLevel === 0) 
     {
-        let cardShuffleArr = []; 
-        let gameCards = document.querySelectorAll('.gameCard');
-        gameCards.forEach((card) => 
-        {
-            cardShuffleArr.push(card);
-            card.remove();
-        });
-        cardShuffleArr.sort(() => Math.random() - 0.5);
         cardShuffleArr.forEach((card, index) => 
         {
             if (index % 2 === 0) {
                 column0.appendChild(card);
-            } else {
+            } 
+            else 
+            {
                 column1.appendChild(card);
             }
         });
     }
+    else if (currentLevel === 1)
+    {
+        cardShuffleArr.forEach((card, index) => 
+        {
+            if (index % 3 === 0) {
+                column0.appendChild(card);
+            } 
+            else if (index % 3 === 1)
+            {
+                column1.appendChild(card);
+            }
+            else
+            {
+                column2.appendChild(card);
+            }
+        });
+    }    
+    else
+    {
+        cardShuffleArr.forEach((card, index) => 
+        {
+            if (index % 4 === 0) {
+                column0.appendChild(card);
+            } 
+            else if (index % 4 === 1)
+            {
+                column1.appendChild(card);
+            }
+            else if (index % 4 === 2)
+            {
+                column2.appendChild(card);
+            }
+            else
+            {
+                column3.appendChild(card);
+            }
+        });
+    }  
 }
 
 function cardsToColumn(amountOfCards)
@@ -188,12 +230,14 @@ function levelToPlay()
         cardsToColumn(3);
         cardsToColumn(3);
         cardsToColumn(3);
+        shuffleCardPlacement(currentLevel);
     }
     else if (currentLevel === 2)
     {
         cardsToColumn(4);
         cardsToColumn(4);
         cardsToColumn(4);
+        shuffleCardPlacement(currentLevel);
     }
 }
 
