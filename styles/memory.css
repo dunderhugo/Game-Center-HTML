@@ -98,7 +98,7 @@ html, body {
     TODO: Change layout if level 1, 2, 3
     TODO: Add animations when cards spawn*/
 .cardBtn{
-    height: 50px;
+    height: 32px;
     width: 100px;
 }
 
@@ -115,7 +115,7 @@ html, body {
 }
 .gameCard{
     background-color: hsl(0, 0%, 50%);
-    /* color: rgba(0, 0, 0, 0); */
+    color: rgba(0, 0, 0, 0);
     min-height: 125px;
     min-width: 75px;
     border-radius: 10px;
@@ -135,7 +135,23 @@ html, body {
 
 .columnGameBoard{
     background-color: white;
-    border-style: dashed;
+    border-style: groove;
     display: flex;
     flex-direction: column-reverse;
+}
+
+.score{
+    display: flex;
+    padding: 10px;
+}
+.scoreDisplay, .gameLevel{
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 5px;
+    border-style:groove;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 0px;
 }

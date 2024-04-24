@@ -79,6 +79,10 @@ document.addEventListener('DOMContentLoaded', function()
                     }
                     flippedCards = [];
                     turnsPlayed++;
+                    //TODO: level0 = turnsPlayed = 3
+                    //TODO: level1 = turnsPlayed = 5
+                    //TODO: level2 = turnsPlayed = 7
+                    //FIX ME: Game doesnt end after level0
                     if (turnsPlayed == 3 && clearedCurrentLevel === false)
                     {
                         spawnCard(column0);
