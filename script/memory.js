@@ -1,10 +1,16 @@
+// -------------------------------------------------------------------------------
+// ------------------------------Whole code comments------------------------------
 //TODO: change to arrow function: () =>?
+//TODO: change to querySelector or getElementBy, depending on what i need it for 
+//TODO: Check code for inconsistency
+// -------------------------------------------------------------------------------
 var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
 var currentLevelDisplay = document.querySelector("#currentLevel");
 var levelScoreDisplay = document.querySelector("#levelScore");
 var totalScoreDisplay = document.querySelector("#totalScore")
+//TODO: Refactor
 var column0 = document.querySelector("#column0");
 var column1 = document.querySelector("#column1");
 var column2 = document.querySelector("#column2");
@@ -37,7 +43,7 @@ function listGameCards()
     });
 }
 
-
+// Game play
 levelToPlay(currentLevel);
 var checkCard;
 document.addEventListener('DOMContentLoaded', function() 
@@ -69,9 +75,12 @@ document.addEventListener('DOMContentLoaded', function()
                         window.alert("Correct");
                         currentLevelPoints += 1000;
                         levelScoreDisplay.textContent = currentLevelPoints;
-
                         removeCorrectMatches(flippedCards[0], flippedCards[1]);
-                        nextLevel();
+                        if(currentLevelPoints >= 3000)
+                        {
+                            levelDoneScore(currentLevel);
+                            nextLevel();
+                        }
                     }
                     else if(checkCard !== event.target.textContent)
                     {
@@ -87,12 +96,33 @@ document.addEventListener('DOMContentLoaded', function()
                         turnsPlayed = 0;
                         gameOver();
                     }
-
                 }, 500);
             }
         }
     });
 });
+
+function levelDoneScore(currentLevel)
+{
+    var emptyCardsInColumns = [column0.children.length, column1.children.length];
+    if (currentLevel === 1)
+    {
+        emptyCardsInColumns.push(column2.children.length);
+        if (currentLevel === 2)
+        {
+            emptyCardsInColumns.push(column3.children.length);
+        }
+    }
+    for(let i = 0; i < emptyCardsInColumns.length; i++)
+    {
+        if(emptyCardsInColumns[i] != null)
+        {
+            if(emptyCardsInColumns[i] === 0) currentLevelPoints += 225;
+            else if (emptyCardsInColumns[i] === 1) currentLevelPoints += 125;
+            else if (emptyCardsInColumns[i] === 2) currentLevelPoints += 50;
+        }
+    }
+}
 
 var nextCardColor;
 function spawnCard(columnToSpawn)
@@ -210,7 +240,6 @@ function shuffleCardPlacement(currentLevel)
 
 function cardsToColumn(amountOfCards)
 {
-    //TODO: Add random placement on cards when they spawn
     if (amountOfCards === 2)
     {
         spawnCard(column0);
