@@ -1,4 +1,4 @@
-// TODO: Add 3 levels to game
+//TODO: change to arrow function: () =>?
 var rulesDiv = document.getElementById("rulesDiv");
 var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
@@ -12,6 +12,9 @@ document.getElementById("highScoreBtn").addEventListener("click", () => highScor
 document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "block");
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
+document.getElementById("addCardBtn").addEventListener("click", function(){ cardsToColumn(2);});
+document.getElementById("addCardBtn1").addEventListener("click", function(){ cardsToColumn(3);});
+document.getElementById("addCardBtn2").addEventListener("click", function(){ cardsToColumn(4);});
 var memoryArr = ["blue", "green", "yellow", "pink", "red", "purple", "orange", "cyan", "magenta", "teal", "lime", "indigo"];
 var flippedCards = [];
 var turnsPlayed = 0;
@@ -20,56 +23,8 @@ var currentLevelPoints = 0;
 var totalPoints = 0;
 var nextCardMustMatch = false;
 var currentLevel = 0;
-levelToPlay();
-//TODO: Add random placement on cards when they spawn
-//TODO: change to arrow function: () =>?
 
-function cardsToColumn(amountOfCards)
-{
-    if (amountOfCards === 2)
-    {
-        spawnCard(column0);
-        spawnCard(column1);
-    }
-    else if (amountOfCards === 3)
-    {
-        spawnCard(column0);
-        spawnCard(column1);
-        spawnCard(column2);
-    }
-    else 
-    {
-        spawnCard(column0);
-        spawnCard(column1);
-        spawnCard(column2);
-        spawnCard(column3);
-    }
-}
-var nextCardColor;
-function spawnCard(columnToSpawn)
-{
-    var countGameCard = document.querySelectorAll('.gameCard').length;
-    var newCard = document.createElement("div");
-    newCard.id = "card" + countGameCard;
-    newCard.className = "gameCard";
-    if(!nextCardMustMatch)
-    {
-        var randomColor = Math.floor(Math.random() * memoryArr.length);
-        nextCardColor = memoryArr[randomColor];
-        newCard.textContent = memoryArr[randomColor];
-        memoryArr.splice(randomColor, 1)[0];
-        nextCardMustMatch = true;
-    }
-    else
-    {
-        newCard.textContent = nextCardColor;
-        nextCardMustMatch = false;
-    }
-    columnToSpawn.appendChild(newCard);
-}
-document.getElementById("addCardBtn").addEventListener("click", function(){ cardsToColumn(2);});
-document.getElementById("addCardBtn1").addEventListener("click", function(){ cardsToColumn(3);});
-document.getElementById("addCardBtn2").addEventListener("click", function(){ cardsToColumn(4);});
+levelToPlay();
 var checkCard;
 document.addEventListener('DOMContentLoaded', function() 
 {
@@ -122,6 +77,28 @@ document.addEventListener('DOMContentLoaded', function()
     });
 });
 
+var nextCardColor;
+function spawnCard(columnToSpawn)
+{
+    var countGameCard = document.querySelectorAll('.gameCard').length;
+    var newCard = document.createElement("div");
+    newCard.id = "card" + countGameCard;
+    newCard.className = "gameCard";
+    if(!nextCardMustMatch)
+    {
+        var randomColor = Math.floor(Math.random() * memoryArr.length);
+        nextCardColor = memoryArr[randomColor];
+        newCard.textContent = memoryArr[randomColor];
+        memoryArr.splice(randomColor, 1)[0];
+        nextCardMustMatch = true;
+    }
+    else
+    {
+        newCard.textContent = nextCardColor;
+        nextCardMustMatch = false;
+    }
+    columnToSpawn.appendChild(newCard);
+}
 
 function nextLevel()
 {
@@ -141,6 +118,30 @@ function nextLevel()
         }
     }
 }
+
+function cardsToColumn(amountOfCards)
+{
+    //TODO: Add random placement on cards when they spawn
+    if (amountOfCards === 2)
+    {
+        spawnCard(column0);
+        spawnCard(column1);
+    }
+    else if (amountOfCards === 3)
+    {
+        spawnCard(column0);
+        spawnCard(column1);
+        spawnCard(column2);
+    }
+    else 
+    {
+        spawnCard(column0);
+        spawnCard(column1);
+        spawnCard(column2);
+        spawnCard(column3);
+    }
+}
+
 function levelToPlay()
 {
     if (currentLevel === 0)
@@ -162,6 +163,7 @@ function levelToPlay()
         cardsToColumn(4);
     }
 }
+
 function gameOver()
 {
     for(let i = 0; i < 4; i++)
@@ -174,6 +176,7 @@ function gameOver()
     // TODO: Add a view instead of window.alert 
     if (toManyCards) window.alert("GameOver");
 }
+
 function removeCorrectMatches(divToRemoveOne, divToRemoveTwo)
 {
     let addColorToArray = document.getElementById(divToRemoveOne).textContent;
@@ -191,8 +194,10 @@ function changeToDefaultColor(colorOne, colorTwo)
     removeOne.style.backgroundColor = "";
     removeTwo.style.backgroundColor = "";
 }
+
 //TODO: Refactor
-function colorCardChange(card) {
+function colorCardChange(card) 
+{
     let cardToChange = document.getElementById(card);
     switch (cardToChange.textContent) {
         case "blue":
