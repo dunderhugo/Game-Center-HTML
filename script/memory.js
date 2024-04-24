@@ -17,7 +17,8 @@ var memoryArr = ["blue", "green", "yellow", "pink", "red"];
 var flippedCards = [];
 var turnsPlayed = 0;
 //TODO: Get points depending on how many rows are empty when level is completed
-var points = 0;
+var currentLevelPoints = 0;
+var totalPoints = 0;
 var nextCardMustMatch = false;
 var currentLevel = 0;
 
@@ -95,8 +96,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         //TODO: remove window alert, use something else when cards
                         // are correct or not
                         window.alert("Correct");
-                        points += 1000;
+                        currentLevelPoints += 1000;
                         removeCorrectMatches(flippedCards[0], flippedCards[1]);
+                        nextLevel();
                     }
                     else if(checkCard !== event.target.textContent)
                     {
@@ -118,9 +120,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
 function nextLevel()
 {
-    if (points >= 3000)
+    console.log("Total points: "+ totalPoints, "Round points: " + currentLevelPoints);
+    if (currentLevelPoints >= 3000)
     {
         if (currentLevel === 2)
         {
@@ -130,6 +134,8 @@ function nextLevel()
         else
         {
             currentLevel++;
+            totalPoints += currentLevelPoints;
+            currentLevelPoints = 0;
         }
     }
 }
