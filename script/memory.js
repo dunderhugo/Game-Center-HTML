@@ -86,6 +86,8 @@ document.addEventListener('DOMContentLoaded', function()
                     {
                         spawnCard(column0);
                         spawnCard(column1);
+                        if(currentLevel >= 1) spawnCard(column2);
+                        if(currentLevel == 2) spawnCard(column3);
                         turnsPlayed = 0;
                         gameOver();
                     }
