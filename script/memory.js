@@ -17,7 +17,7 @@ var column2 = document.querySelector("#column2");
 var column3 = document.querySelector("#column3");
 //TODO: Display: flex instead of "block"
 document.getElementById("rulesBtn").addEventListener("click", () => rulesDiv.style.display = "block");
-document.getElementById("highScoreBtn").addEventListener("click", () => highScoreDiv.style.display = "block");
+document.getElementById("highScoreBtn").addEventListener("click", () => highScoreDiv.style.display = "flex");
 document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "flex");
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");

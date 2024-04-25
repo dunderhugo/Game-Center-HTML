@@ -22,16 +22,18 @@
     </div>
     <div id="highScoreDiv">
         <div class="hsContent">
-            <button id="exitHsBtn">X</button>
-            <h1>Highscore:</h1>
-            <!-- TODO: Change the list. -->
-            <ol>
-                <div class="playerHighScore" id="highScore1">
+            <div class="header">
+                <h1>Highscore:</h1>
+            </div>
+            <div class="highScoreList">
+                <ol>
                     <li>
-                        <span class="scoreNumber">1.</span> -score- <span class="playerName">-playername-</span>
+                        <span class="hsName" id="hsName0"> -name- </span>
+                        <span class="hsScore" id="hsScore0"> -score- </span>
                     </li>
-                </div>
-            </ol>
+                </ol>
+            </div>
+            <button id="exitHsBtn">CLOSE</button>
         </div>
     </div>
     <div id="gameBoardDiv">
