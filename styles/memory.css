@@ -121,6 +121,7 @@ html, body {
     border-radius: 10px;
     transition: all 300ms ease;
     margin: 5px;
+    border: 2px solid black;
 }
 .gameCard:hover{
     background-color: hsl(0, 0%, 75%);
@@ -135,7 +136,6 @@ html, body {
 
 .columnGameBoard{
     background-color: white;
-    border-style: groove;
     display: flex;
     flex-direction: column-reverse;
 }
@@ -144,7 +144,7 @@ html, body {
     display: flex;
     padding: 10px;
 }
-.scoreDisplay, .gameLevel{
+.scoreDisplay, #gameLevel{
     padding-left: 5px;
     padding-right: 5px;
     margin: 5px;
@@ -154,4 +154,10 @@ html, body {
     justify-content: center;
     align-items: center;
     line-height: 0px;
+    z-index: 1;
+    background-color: hsl(0, 0%, 75%);
+}
+#totalScore, #currentLevel, #levelScore{
+    font-size:x-large;
+    font-weight: 550;
 }
