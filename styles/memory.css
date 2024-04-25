@@ -50,7 +50,7 @@ html, body {
 }
 
 /* HIGHSCORE CONTENT*/
-#highScoreDiv, #rulesDiv{
+#highScoreDiv, #rulesDiv, #gameOver{
     height: 600px;
     width: 300px;
     display: none;
@@ -78,7 +78,7 @@ html, body {
     height: 80%;
 }
 
-#exitHsBtn, #exitRulesBtn{
+#exitHsBtn, #exitRulesBtn, #mainMenuBtn{
     position: absolute;
     bottom: 10px;
     color: black;
@@ -173,4 +173,16 @@ html, body {
 #totalScore, #currentLevel, #levelScore{
     font-size:x-large;
     font-weight: 550;
+}
+
+#gameOver{
+    position: fixed;
+    z-index: 910;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#roundEndScore{
+    font-weight: 600;
 }
