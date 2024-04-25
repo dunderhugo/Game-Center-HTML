@@ -32,7 +32,7 @@ var nextCardMustMatch = false;
 var currentLevel = 0;
 var clearedCurrentLevel;
 //TEMPORARY BTNS
-document.getElementById("addCardBtn2").addEventListener("click", function(){ cardsToColumn(4);});
+
 
 // Game play
 levelToPlay(currentLevel);
