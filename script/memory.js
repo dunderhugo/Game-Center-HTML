@@ -24,6 +24,7 @@ document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDi
 var memoryArr = ["blue", "green", "yellow", "pink", "red", "purple", "orange", "cyan", "magenta", "teal", "lime", "indigo"];
 var flippedCards = [];
 var turnsPlayed = 0;
+var maxPlayerTurnsPerLevel = [3,5,7];
 //TODO: Get points depending on how many rows are empty when level is completed
 var currentLevelPoints = 0;
 var totalPoints = 0;
@@ -79,11 +80,8 @@ document.addEventListener('DOMContentLoaded', function()
                     }
                     flippedCards = [];
                     turnsPlayed++;
-                    //TODO: level0 = turnsPlayed = 3
-                    //TODO: level1 = turnsPlayed = 5
-                    //TODO: level2 = turnsPlayed = 7
                     //FIX ME: Game doesnt end after level0
-                    if (turnsPlayed == 3 && clearedCurrentLevel === false)
+                    if (turnsPlayed == maxPlayerTurnsPerLevel[currentLevel] && clearedCurrentLevel === false)
                     {
                         spawnCard(column0);
                         spawnCard(column1);
@@ -95,28 +93,6 @@ document.addEventListener('DOMContentLoaded', function()
         }
     });
 });
-
-function levelDoneScore(currentLevel)
-{
-    var emptyCardsInColumns = [column0.children.length, column1.children.length];
-    if (currentLevel === 1)
-    {
-        emptyCardsInColumns.push(column2.children.length);
-        if (currentLevel === 2)
-        {
-            emptyCardsInColumns.push(column3.children.length);
-        }
-    }
-    for(let i = 0; i < emptyCardsInColumns.length; i++)
-    {
-        if(emptyCardsInColumns[i] != null)
-        {
-            if(emptyCardsInColumns[i] === 0) currentLevelPoints += 225;
-            else if (emptyCardsInColumns[i] === 1) currentLevelPoints += 125;
-            else if (emptyCardsInColumns[i] === 2) currentLevelPoints += 50;
-        }
-    }
-}
 
 var nextCardColor;
 function spawnCard(columnToSpawn)
@@ -169,6 +145,28 @@ function nextLevel()
     }
 }
 
+function levelDoneScore(currentLevel)
+{
+    var emptyCardsInColumns = [column0.children.length, column1.children.length];
+    if (currentLevel === 1)
+    {
+        emptyCardsInColumns.push(column2.children.length);
+        if (currentLevel === 2)
+        {
+            emptyCardsInColumns.push(column3.children.length);
+        }
+    }
+    for(let i = 0; i < emptyCardsInColumns.length; i++)
+    {
+        if(emptyCardsInColumns[i] != null)
+        {
+            if(emptyCardsInColumns[i] === 0) currentLevelPoints += 225;
+            else if (emptyCardsInColumns[i] === 1) currentLevelPoints += 125;
+            else if (emptyCardsInColumns[i] === 2) currentLevelPoints += 50;
+        }
+    }
+}
+
 function shuffleCardPlacement(currentLevel) 
 {
     let cardShuffleArr = []; 
@@ -183,51 +181,27 @@ function shuffleCardPlacement(currentLevel)
     {
         cardShuffleArr.forEach((card, index) => 
         {
-            if (index % 2 === 0) {
-                column0.appendChild(card);
-            } 
-            else 
-            {
-                column1.appendChild(card);
-            }
+            if (index % 2 === 0) column0.appendChild(card);
+            else column1.appendChild(card);
         });
     }
     else if (currentLevel === 1)
     {
         cardShuffleArr.forEach((card, index) => 
         {
-            if (index % 3 === 0) {
-                column0.appendChild(card);
-            } 
-            else if (index % 3 === 1)
-            {
-                column1.appendChild(card);
-            }
-            else
-            {
-                column2.appendChild(card);
-            }
+            if (index % 3 === 0) column0.appendChild(card);
+            else if (index % 3 === 1) column1.appendChild(card);
+            else column2.appendChild(card);
         });
     }    
     else
     {
         cardShuffleArr.forEach((card, index) => 
         {
-            if (index % 4 === 0) {
-                column0.appendChild(card);
-            } 
-            else if (index % 4 === 1)
-            {
-                column1.appendChild(card);
-            }
-            else if (index % 4 === 2)
-            {
-                column2.appendChild(card);
-            }
-            else
-            {
-                column3.appendChild(card);
-            }
+            if (index % 4 === 0) column0.appendChild(card);
+            else if (index % 4 === 1) column1.appendChild(card);
+            else if (index % 4 === 2) column2.appendChild(card);
+            else column3.appendChild(card);
         });
     }  
 }
