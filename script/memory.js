@@ -22,6 +22,7 @@ document.getElementById("startBtn").addEventListener("click", ()=> {
     gameBoardDiv.style.display = "flex";
     blockClicksView(500);
 });
+document.getElementById("mainMenuBtn").addEventListener("click", () => location.reload());
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
 var memoryArr = ["blue", "green", "yellow", "pink", "red", "purple", "orange", "cyan", "magenta", "teal", "lime", "indigo"];
@@ -32,6 +33,7 @@ var maxPlayerTurnsPerLevel = [3,5,7];
 var currentLevelPoints = 0;
 var totalPoints = 0;
 var nextCardMustMatch = false;
+var youWin = false;
 var currentLevel = 0;
 var clearedCurrentLevel;
 //TEMPORARY BTNS
@@ -55,10 +57,7 @@ document.addEventListener('DOMContentLoaded', function()
                 flippedCards[0] = cardId;
                 checkCard = event.target.textContent;
             }
-            else if (flippedCards[0] === cardId)
-            {
-                console.log("Card is already showing");
-            }
+            else if (flippedCards[0] === cardId) console.log("Card is already showing");
             else 
             {
                 blockClicksView(1000)
@@ -68,9 +67,6 @@ document.addEventListener('DOMContentLoaded', function()
                     turnsPlayed++;
                     if(checkCard === event.target.textContent)
                     {
-                        //TODO: remove window alert, use something else when cards
-                        // are correct or not
-                        console.log("Correct");
                         currentLevelPoints += 1000;
                         levelScoreDisplay.textContent = currentLevelPoints;
                         removeCorrectMatches(flippedCards[0], flippedCards[1]);
@@ -81,11 +77,7 @@ document.addEventListener('DOMContentLoaded', function()
                             turnsPlayed = 0;
                         }
                     }
-                    else if(checkCard !== event.target.textContent)
-                    {
-                        console.log("No match");
-                        changeToDefaultColor(flippedCards[0], flippedCards[1]);
-                    }
+                    else if(checkCard !== event.target.textContent) changeToDefaultColor(flippedCards[0], flippedCards[1]);
                     flippedCards = [];
                     if (turnsPlayed == maxPlayerTurnsPerLevel[currentLevel] && clearedCurrentLevel === false)
                     {
@@ -131,8 +123,8 @@ function nextLevel()
     {
         if (currentLevel === 2)
         {
-            //Add view
-            console.log("You win!");
+            youWin = true;
+            gamOverPage()
         }
         else
         {
@@ -271,7 +263,7 @@ function gameOver()
         }
     }
     // TODO: Add a view instead of window.alert 
-    if (toManyCards) console.log("GameOver");
+    if (toManyCards) gamOverPage();
 }
 
 function removeCorrectMatches(divToRemoveOne, divToRemoveTwo)
@@ -306,4 +298,27 @@ function blockClicksView(ms)
     setTimeout(function() {
         pageBlocker.style.display = "none";
     }, ms);
+}
+
+function gamOverPage()
+{
+    const page = document.getElementById("gameOver");
+    const lostOrWon = document.getElementById("lostOrWon");
+    if (youWin) lostOrWon.textContent = "win!"
+    else lostOrWon.textContent = "lost :(";
+    document.getElementById("roundScore").textContent = totalPoints;
+    setTimeout(function() {
+        page.style.display = "flex";
+    }, 700);
+    
+}
+let saveConfirmed = false;
+document.getElementById("saveHsBtn").addEventListener("click", saveHs);
+function saveHs()
+{
+    let name = document.getElementById("name").value;
+    let score = document.getElementById("roundScore").textContent;
+    console.log(name);
+    console.log(score);
+    if (saveConfirmed) document.getElementById("saveHsBtn").disable = true;
 }
