@@ -9,7 +9,7 @@ var highScoreDiv = document.getElementById("highScoreDiv");
 var gameBoardDiv = document.getElementById("gameBoardDiv");
 var currentLevelDisplay = document.querySelector("#currentLevel");
 var levelScoreDisplay = document.querySelector("#levelScore");
-var totalScoreDisplay = document.querySelector("#totalScore")
+var totalScoreDisplay = document.querySelector("#totalScore");
 //TODO: Refactor
 var column0 = document.querySelector("#column0");
 var column1 = document.querySelector("#column1");
@@ -18,7 +18,10 @@ var column3 = document.querySelector("#column3");
 //TODO: Display: flex instead of "block"
 document.getElementById("rulesBtn").addEventListener("click", () => rulesDiv.style.display = "block");
 document.getElementById("highScoreBtn").addEventListener("click", () => highScoreDiv.style.display = "flex");
-document.getElementById("startBtn").addEventListener("click", ()=> gameBoardDiv.style.display = "flex");
+document.getElementById("startBtn").addEventListener("click", ()=> {
+    gameBoardDiv.style.display = "flex";
+    blockClicksView(500);
+});
 document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
 document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
 var memoryArr = ["blue", "green", "yellow", "pink", "red", "purple", "orange", "cyan", "magenta", "teal", "lime", "indigo"];
@@ -48,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function()
             colorCardChange(cardId);
             if (flippedCards.length < 1)
             {
+                blockClicksView(50)
                 flippedCards[0] = cardId;
                 checkCard = event.target.textContent;
             }
@@ -57,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function()
             }
             else 
             {
+                blockClicksView(1000)
                 flippedCards[1] = cardId;
                 setTimeout(function()
                 {
@@ -291,4 +296,14 @@ function colorCardChange(card)
 {
     let cardToChange = document.getElementById(card);
     cardToChange.style.backgroundColor = cardToChange.textContent;
+}
+
+function blockClicksView(ms)
+{
+    // blocks so you cant press anything for "ms" time, for safety reasons :)
+    const pageBlocker = document.getElementById("blockPage");
+    pageBlocker.style.display = "flex";
+    setTimeout(function() {
+        pageBlocker.style.display = "none";
+    }, ms);
 }
