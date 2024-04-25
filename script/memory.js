@@ -322,3 +322,36 @@ function saveHs()
     console.log(score);
     if (saveConfirmed) document.getElementById("saveHsBtn").disable = true;
 }
+function jsonToArray()
+{
+    fetch("json/memoryHS.json")
+        .then(response => response.text())
+        .then(values =>
+        {
+            const hsList = JSON.parse(values);
+            arrToHs(hsList)
+        })
+        .catch(error => console.error(error));
+    
+}
+jsonToArray();
+
+function arrToHs(json)
+{
+    json.sort(function(a,b){
+        return b.score - a.score;
+    })
+    for(let i = 0;i < 2; i++)
+    {
+        let listItem = document.createElement("li");
+        listItem.id = "hs" + i;
+        var spanScore = document.createElement("span");
+        var spanName = document.createElement("span");
+        spanScore.textContent = json[i].score + " ";
+        spanName.textContent = json[i].name;
+        listItem.appendChild(spanScore);
+        listItem.appendChild(spanName);
+        document.getElementById("hsLi").appendChild(listItem);
+        console.log(json[i])
+    }
+}
