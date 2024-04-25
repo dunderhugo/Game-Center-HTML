@@ -30,7 +30,7 @@ var currentLevelPoints = 0;
 var totalPoints = 0;
 var nextCardMustMatch = false;
 var currentLevel = 0;
-var clearedCurrentLevel = false;
+var clearedCurrentLevel;
 //TEMPORARY BTNS
 document.getElementById("addCardBtn2").addEventListener("click", function(){ cardsToColumn(4);});
 
@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function()
     {
         if (event.target.classList.contains('gameCard')) 
         {
+            clearedCurrentLevel = false;
             var cardId = event.target.id;
             colorCardChange(cardId);
             if (flippedCards.length < 1)
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function()
                 flippedCards[1] = cardId;
                 setTimeout(function()
                 {
+                    turnsPlayed++;
                     if(checkCard === event.target.textContent)
                     {
                         //TODO: remove window alert, use something else when cards
@@ -71,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function()
                         {
                             levelDoneScore(currentLevel);
                             nextLevel();
+                            turnsPlayed = 0;
                         }
                     }
                     else if(checkCard !== event.target.textContent)
@@ -79,8 +82,6 @@ document.addEventListener('DOMContentLoaded', function()
                         changeToDefaultColor(flippedCards[0], flippedCards[1]);
                     }
                     flippedCards = [];
-                    turnsPlayed++;
-                    //FIX ME: Game doesnt end after level0
                     if (turnsPlayed == maxPlayerTurnsPerLevel[currentLevel] && clearedCurrentLevel === false)
                     {
                         spawnCard(column0);
