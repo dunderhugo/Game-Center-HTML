@@ -122,6 +122,20 @@ html, body {
     transition: all 300ms ease;
     margin: 5px;
     border: 2px solid black;
+    animation: dropCards 0.4s linear;
+    /* transition: transform 0.4s ease; */
+}
+@keyframes dropCards {
+    0% {
+        transform: translateY(-200px);
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+.animateDrop {
+    animation: dropCards 0.4s linear;
 }
 .gameCard:hover{
     background-color: hsl(0, 0%, 75%);

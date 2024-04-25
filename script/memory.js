@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function()
             }
             else if (flippedCards[0] === cardId)
             {
-                window.alert("Card is already showing");
+                console.log("Card is already showing");
             }
             else 
             {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function()
                     {
                         //TODO: remove window alert, use something else when cards
                         // are correct or not
-                        window.alert("Correct");
+                        console.log("Correct");
                         currentLevelPoints += 1000;
                         levelScoreDisplay.textContent = currentLevelPoints;
                         removeCorrectMatches(flippedCards[0], flippedCards[1]);
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function()
                     }
                     else if(checkCard !== event.target.textContent)
                     {
-                        window.alert("No match");
+                        console.log("No match");
                         changeToDefaultColor(flippedCards[0], flippedCards[1]);
                     }
                     flippedCards = [];
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function()
                         turnsPlayed = 0;
                         gameOver();
                     }
-                }, 500);
+                }, 1000);
             }
         }
     });
@@ -125,7 +125,7 @@ function nextLevel()
         if (currentLevel === 2)
         {
             //Add view
-            window.alert("You win!");
+            console.log("You win!");
         }
         else
         {
@@ -264,7 +264,7 @@ function gameOver()
         }
     }
     // TODO: Add a view instead of window.alert 
-    if (toManyCards) window.alert("GameOver");
+    if (toManyCards) console.log("GameOver");
 }
 
 function removeCorrectMatches(divToRemoveOne, divToRemoveTwo)
