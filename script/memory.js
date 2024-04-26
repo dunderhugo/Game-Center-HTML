@@ -1,7 +1,6 @@
 // -------------------------------------------------------------------------------
 // ------------------------------Whole code comments------------------------------
 //TODO: change to arrow function: () =>?
-//TODO: change to querySelector or getElementBy, depending on what i need it for 
 //TODO: Check code for inconsistency
 // -------------------------------------------------------------------------------
 //TODO: Refactor
@@ -272,7 +271,6 @@ function removeCorrectMatches(divToRemoveOne, divToRemoveTwo)
     removeDivOne.remove(); 
     removeDivTwo.remove();
 }
-
 function changeToDefaultColor(colorOne, colorTwo)
 {
     var removeOne = document.getElementById(colorOne);
