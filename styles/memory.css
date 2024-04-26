@@ -72,6 +72,13 @@ html, body {
     border-radius: 20px;
 }
 
+.hsItem{
+    padding: 2px;
+    height: 25px;
+    font-size:medium;
+    font-weight: 500;
+}
+
 .header{
     position: absolute;
     top: 0px;

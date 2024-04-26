@@ -4,42 +4,39 @@
 //TODO: change to querySelector or getElementBy, depending on what i need it for 
 //TODO: Check code for inconsistency
 // -------------------------------------------------------------------------------
-var rulesDiv = document.getElementById("rulesDiv");
-var highScoreDiv = document.getElementById("highScoreDiv");
-var gameBoardDiv = document.getElementById("gameBoardDiv");
-var currentLevelDisplay = document.querySelector("#currentLevel");
-var levelScoreDisplay = document.querySelector("#levelScore");
-var totalScoreDisplay = document.querySelector("#totalScore");
 //TODO: Refactor
-var column0 = document.querySelector("#column0");
-var column1 = document.querySelector("#column1");
-var column2 = document.querySelector("#column2");
-var column3 = document.querySelector("#column3");
-//TODO: Display: flex instead of "block"
-document.getElementById("rulesBtn").addEventListener("click", () => rulesDiv.style.display = "block");
+var column0 = document.getElementById("column0");
+var column1 = document.getElementById("column1");
+var column2 = document.getElementById("column2");
+var column3 = document.getElementById("column3");
+
+var rulesDiv = document.getElementById("rulesDiv");
+document.getElementById("rulesBtn").addEventListener("click", () => rulesDiv.style.display = "flex");
+document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
+
+var highScoreDiv = document.getElementById("highScoreDiv");
 document.getElementById("highScoreBtn").addEventListener("click", () => highScoreDiv.style.display = "flex");
+document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
+
+var gameBoardDiv = document.getElementById("gameBoardDiv");
 document.getElementById("startBtn").addEventListener("click", ()=> {
     gameBoardDiv.style.display = "flex";
     blockClicksView(500);
 });
+
 document.getElementById("mainMenuBtn").addEventListener("click", () => location.reload());
-document.getElementById("exitRulesBtn").addEventListener("click", () => rulesDiv.style.display = "none");
-document.getElementById("exitHsBtn").addEventListener("click", () => highScoreDiv.style.display = "none");
+
+// Game play
+var levelScoreDisplay = document.getElementById("levelScore");
 var memoryArr = ["blue", "green", "yellow", "pink", "red", "purple", "orange", "cyan", "magenta", "teal", "lime", "indigo"];
 var flippedCards = [];
 var turnsPlayed = 0;
-var maxPlayerTurnsPerLevel = [3,5,7];
-//TODO: Get points depending on how many rows are empty when level is completed
-var currentLevelPoints = 0;
-var totalPoints = 0;
-var nextCardMustMatch = false;
 var youWin = false;
 var currentLevel = 0;
 var clearedCurrentLevel;
-//TEMPORARY BTNS
-
-
-// Game play
+var maxPlayerTurnsPerLevel = [3,5,7];
+var totalPoints = 0;
+var currentLevelPoints = 0;
 levelToPlay(currentLevel);
 var checkCard;
 document.addEventListener('DOMContentLoaded', function() 
@@ -53,14 +50,14 @@ document.addEventListener('DOMContentLoaded', function()
             colorCardChange(cardId);
             if (flippedCards.length < 1)
             {
-                blockClicksView(50)
+                blockClicksView(50);
                 flippedCards[0] = cardId;
                 checkCard = event.target.textContent;
             }
             else if (flippedCards[0] === cardId) console.log("Card is already showing");
             else 
             {
-                blockClicksView(1000)
+                blockClicksView(1000);
                 flippedCards[1] = cardId;
                 setTimeout(function()
                 {
@@ -94,29 +91,8 @@ document.addEventListener('DOMContentLoaded', function()
     });
 });
 
-var nextCardColor;
-function spawnCard(columnToSpawn)
-{
-    var countGameCard = document.querySelectorAll('.gameCard').length;
-    var newCard = document.createElement("div");
-    newCard.id = "card" + countGameCard;
-    newCard.className = "gameCard";
-    if(!nextCardMustMatch)
-    {
-        var randomColor = Math.floor(Math.random() * memoryArr.length);
-        nextCardColor = memoryArr[randomColor];
-        newCard.textContent = memoryArr[randomColor];
-        memoryArr.splice(randomColor, 1)[0];
-        nextCardMustMatch = true;
-    }
-    else
-    {
-        newCard.textContent = nextCardColor;
-        nextCardMustMatch = false;
-    }
-    columnToSpawn.appendChild(newCard);
-}
-
+var totalScoreDisplay = document.getElementById("totalScore");
+var currentLevelDisplay = document.getElementById("currentLevel");
 function nextLevel()
 {
     if (currentLevelPoints >= 3000)
@@ -124,7 +100,7 @@ function nextLevel()
         if (currentLevel === 2)
         {
             youWin = true;
-            gamOverPage()
+            gamOverPage();
         }
         else
         {
@@ -166,7 +142,29 @@ function levelDoneScore(currentLevel)
         }
     }
 }
-
+var nextCardMustMatch = false;
+var nextCardColor;
+function spawnCard(columnToSpawn)
+{
+    var countGameCard = document.querySelectorAll('.gameCard').length;
+    var newCard = document.createElement("div");
+    newCard.id = "card" + countGameCard;
+    newCard.className = "gameCard";
+    if(!nextCardMustMatch)
+    {
+        var randomColor = Math.floor(Math.random() * memoryArr.length);
+        nextCardColor = memoryArr[randomColor];
+        newCard.textContent = memoryArr[randomColor];
+        memoryArr.splice(randomColor, 1)[0];
+        nextCardMustMatch = true;
+    }
+    else
+    {
+        newCard.textContent = nextCardColor;
+        nextCardMustMatch = false;
+    }
+    columnToSpawn.appendChild(newCard);
+}
 function shuffleCardPlacement(currentLevel) 
 {
     let cardShuffleArr = []; 
@@ -257,12 +255,11 @@ function gameOver()
 {
     for(let i = 0; i < 4; i++)
     {
-        let checkColumn = document.querySelector("#column" + i).children.length;
+        let checkColumn = document.getElementById("column" + i).children.length;
         if(checkColumn >= 4){
             var toManyCards = true;
         }
     }
-    // TODO: Add a view instead of window.alert 
     if (toManyCards) gamOverPage();
 }
 
@@ -304,7 +301,7 @@ function gamOverPage()
 {
     const page = document.getElementById("gameOver");
     const lostOrWon = document.getElementById("lostOrWon");
-    if (youWin) lostOrWon.textContent = "win!"
+    if (youWin) lostOrWon.textContent = "win!";
     else lostOrWon.textContent = "lost :(";
     document.getElementById("roundScore").textContent = totalPoints;
     setTimeout(function() {
@@ -312,16 +309,7 @@ function gamOverPage()
     }, 700);
     
 }
-let saveConfirmed = false;
-document.getElementById("saveHsBtn").addEventListener("click", saveHs);
-function saveHs()
-{
-    let name = document.getElementById("name").value;
-    let score = document.getElementById("roundScore").textContent;
-    console.log(name);
-    console.log(score);
-    if (saveConfirmed) document.getElementById("saveHsBtn").disable = true;
-}
+
 function jsonToArray()
 {
     fetch("json/memoryHS.json")
@@ -329,7 +317,7 @@ function jsonToArray()
         .then(values =>
         {
             const hsList = JSON.parse(values);
-            arrToHs(hsList)
+            arrToHs(hsList);
         })
         .catch(error => console.error(error));
     
@@ -340,11 +328,12 @@ function arrToHs(json)
 {
     json.sort(function(a,b){
         return b.score - a.score;
-    })
-    for(let i = 0;i < 2; i++)
+    });
+    for(let i = 0;i < 15; i++)
     {
         let listItem = document.createElement("li");
         listItem.id = "hs" + i;
+        listItem.className = "hsItem";
         var spanScore = document.createElement("span");
         var spanName = document.createElement("span");
         spanScore.textContent = json[i].score + " ";
@@ -352,6 +341,5 @@ function arrToHs(json)
         listItem.appendChild(spanScore);
         listItem.appendChild(spanName);
         document.getElementById("hsLi").appendChild(listItem);
-        console.log(json[i])
     }
 }
